@@ -1,9 +1,15 @@
-.container
-{
-  background-color: red;
+body {
+  background-color: #F7F7FF;
 }
 
-h1
-{
+nav {
+  background-color: #577399;
+}
+
+footer {
+  background-color: #495867;
+}
+
+p {
   color: blue;
 }

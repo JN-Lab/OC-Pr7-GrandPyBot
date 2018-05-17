@@ -16,23 +16,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
   </head>
   <body>
-    <nav class="navbar navbar-expand">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">
-            <h1>GrandPy Bot</h1>
-          </div>
-          <div class="col-sm">
-            <h2>Tu cherches un endroit?</h2>
-          </div>
-        </div>
-      </div>
+    <nav class="navbar">
+      <span class="navbar-brand h1">GrandPy Bot</span>
+      <span class= navbar-text>A la recherche d'un endroit?</span>
     </nav>
 
     {% block content %}{% endblock %}
 
-    <footer>
-      <p>Footer en construction</p>
+    <footer class="text-center">
+      <div class="footer-below">
+        <p>Footer en construction</p>
+      </div>
     </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

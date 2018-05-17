@@ -2,6 +2,6 @@
 # coding: utf-8
 import os
 
-class Config(Object):
+class Config(object):
     # Indicate your own secret key
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'YOUR_SECRET_KEY'

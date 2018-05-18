@@ -22,3 +22,7 @@ h1 {
 #teaser {
   color: #F7F7FF;
 }
+
+.no-margin {
+  margin: 0;
+}

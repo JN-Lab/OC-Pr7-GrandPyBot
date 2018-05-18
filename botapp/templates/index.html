@@ -18,10 +18,17 @@
                 <p>Partie historique des messages</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 border">
-            {% include '_message.html' %}
-          </div>
+        <div class="row no-gutter">
+          <form class="form-inline col-md-12" action="" method="">
+            {{ form.hidden_tag() }}
+            <div class="row no-gutter">
+            <div class="input-group col-md-12 border no-margin">
+              {{ form.message.label(class="sr-only") }}
+              {{ form.message(class="form-control") }}
+              {{ form.submit(class="btn btn-default") }}
+            </div>
+            </div>
+          </form>
         </div>
     </div>
   </div>

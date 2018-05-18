@@ -26,3 +26,9 @@ h1 {
 form {
   width: 100%;
 }
+
+#submit-button {
+  border-radius: 0px;
+  background-color: #577399;
+  color: #F7F7FF;
+}

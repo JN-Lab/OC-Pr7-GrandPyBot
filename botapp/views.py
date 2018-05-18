@@ -7,9 +7,11 @@ There is only one page for this app
 
 from flask import render_template, url_for
 from .app import app
+from .forms import MessageForm
 
 @app.route('/')
 @app.route('/index/')
 def index():
     """Initiate the index page"""
-    return render_template('index.html')
+    form = MessageForm()
+    return render_template('index.html', form=form)

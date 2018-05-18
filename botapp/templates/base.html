@@ -14,18 +14,35 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,700,900" rel="stylesheet" type="text/css">
   </head>
   <body>
     <nav class="navbar">
-      <span class="navbar-brand h1">GrandPy Bot</span>
-      <span class= navbar-text>A la recherche d'un endroit?</span>
+      <div class="navbar-header">
+        <h1 class="navbar-brand">GrandPy Bot</h1>
+      </div>
+      <span id="teaser" class="navbar-text">A la recherche d'un endroit?</span>
     </nav>
 
     {% block content %}{% endblock %}
 
     <footer class="text-center">
       <div class="footer-below">
-        <p>Footer en construction</p>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <a href="https://github.com/JN-Lab/OC-Pr7-GrandPyBot" class="btn btn-social-icon btn-link" target="_blank"><i class="fab fa-github fa-3x footer-custom"></i></a>
+              <hr>
+              <span class="footer-custom">Julien Nuellas</span>
+              <p class="footer-custom">Projet d'Etude pour Openclassrooms</p>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
     <!-- Optional JavaScript -->

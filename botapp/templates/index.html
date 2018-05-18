@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4 border">
-          <p>Avatar du papi</p>
+  <div class="row">
+    <div class="col-md-3 border">
+      <div class="row">
+        <div class="col-md-10 offset-md-1 border">
+          <div class="text-center">
+            <img src="{{ url_for('static', filename='img/avatar-example.png') }}" alt="grandpy-avatar" class="img-fluid">
+            <p>Avatar du papi</p>
+          </div>
         </div>
-        <div class="col-md-8 border">
-          <p>Parti message</p>
-        </div>
+      </div>
+    </div>
+    <div class="col-md-9 border">
+        <p>Parti message</p>
     </div>
   </div>
 {% endblock %}

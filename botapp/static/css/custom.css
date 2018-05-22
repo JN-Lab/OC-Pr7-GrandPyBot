@@ -140,11 +140,11 @@ h1 {
   flex-direction: row;
 }
 
-.form-element:nth-child(1) {
+.form-element:nth-child(2) {
   flex: 1;
   border: none;
 }
-.form-element:nth-child(2) {
+.form-element:nth-child(3) {
   border: none;
   color: #1976D2;
   font-weight: bold;

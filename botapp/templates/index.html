@@ -11,23 +11,50 @@
         </div>
       </div>
     </div>
+
+    {# Message Card #}
     <div id="message-container" class="main-element">
+
+      {# Title of message card #}
       <div id="message-title" class="message-element">
         <div id="online-circle" class="message-title-element"></div>
         <div class="message-title-element">GrandPy</div>
       </div>
+
+      {# Avatar Card if device is smartphone #}
+      <nav id="message-nav" class="message-element">
+        <button id="chat-button" class="message-nav-element">CHAT</button>
+        <button id="info-button" class="message-nav-element">INFOS</button>
+      </nav>
+
+      {# Where discussion between user and grandpy is printed #}
       <div id="message-historic" class="message-element">
         <p>Historique des échanges</p>
       </div>
+
+      {# GrandPy Status Treatment - if he thinks, write, or nothing #}
+      <div id="message-status" class="message-element">
+          <div id="status-text" class="message-status-element">laisse moi réfléchir</div>
+          <div id="status-loading" class="message-status-element">...</div>
+      </div>
+
+      {# Block where user writes messages #}
+
       <div id="message-input" class="message-element">
-        <div id="message-field">
+        <form id="form-container" action="" method="" class="message-input-element">
+          {{ form.hidden_tag() }}
+          {{ form.message(class="form-element", placeholder="Ecris ton message") }}
+          {{ form.submit(class="form-element", value="envoyer") }}
+        </form>
+      {#
+        <div id="message-field" class="message-input-element">
           <form id="form-container" action="" method="" class="message-field-element">
             {{ form.hidden_tag() }}
             {{ form.message(class="form-element", placeholder="Ecris ton message") }}
-            {{ form.submit(class="form-element", value="envoyer") }}
+            {{ form.submit(class="form-element", value="ENVOYER") }}
           </form>
-
         </div>
+       #}
       </div>
     </div>
   </div>

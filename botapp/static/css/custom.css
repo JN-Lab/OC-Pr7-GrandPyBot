@@ -30,7 +30,7 @@ html, body {
 
 /* Nav Configuration */
 nav {
-  background-color: #577399;
+  /* background-color: #577399; */
 }
 
 h1 {
@@ -71,7 +71,7 @@ h1 {
 
 /* From Main Content : Message Content Configuration */
 #message-container {
-  background-color: #F5F5F5;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
 
@@ -83,12 +83,36 @@ h1 {
 }
 
 .message-element:nth-child(2) {
-  flex: 1;
 }
 
 .message-element:nth-child(3) {
+  flex: 1;
+}
+
+.message-element:nth-child(4) {
 
 }
+
+.message-element:nth-child(5) {
+
+}
+
+/* From Message Content Configuration: Avatar configuration */
+#message-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #FFFFFF;
+  height: 50px;
+}
+
+.message-nav-element {
+  flex: auto;
+  border: none;
+  font-weight: bold;
+  color
+}
+
 /* From Message Content Configuration: Title configuration */
 
 #message-title {
@@ -97,8 +121,9 @@ h1 {
   justify-content: flex-start;
   align-items: center;
 
-  background-color: #0288D1;
+  background-color: #344955;
   color: #FFFFFF;
+  height: 50px;
 
 }
 
@@ -113,26 +138,36 @@ h1 {
 /* From Message Content Configuration: Historic configuration */
 
 #message-historic {
-  opacity : 50%;
+  background-color: #CFD8DC;
+
+}
+/* From Message Content Configuration: Status configuration */
+
+#message-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #CFD8DC;
+}
+
+.message-status-element{
+
 }
 
 /* From Message Content Configuration: Form configuration */
 
 #message-input {
-  background-color: #FFFFFF;
-  border-top: solid;
-  border-width: 2px;
-  border-color: #E0E0E0;
-}
-
-#message-field {
   display: flex;
   flex-direction: row;
-  margin: 2px;
+  justify-content: flex-start;
+  height: 50px;
 }
 
-.message-field-element {
-  flex: auto;
+.message-input-element:nth-child(1) {
+  flex: 1;
+}
+
+.message-input-element:nth-child(2) {
 }
 
 #form-container {
@@ -146,8 +181,9 @@ h1 {
 }
 .form-element:nth-child(3) {
   border: none;
-  color: #1976D2;
+  color: #F9AA33;
   font-weight: bold;
+  background: none;
 }
 
 /* Footer Configuration */

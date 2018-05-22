@@ -144,9 +144,27 @@ h1 {
 
 /* From Message Content Configuration: Historic configuration */
 
-#message-historic {
+#message-content {
+  display: flex;
+  flex-direction: column;
   background-color: #CFD8DC;
 
+}
+
+.content-element:nth-child(1) {
+  flex: 1;
+}
+
+.content-element:nth-child(2) {
+  flex: 1;
+}
+
+#info-container {
+
+}
+
+#chat-container {
+  display: none;
 }
 /* From Message Content Configuration: Status configuration */
 

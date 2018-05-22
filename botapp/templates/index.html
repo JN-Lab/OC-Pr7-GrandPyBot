@@ -1,35 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div id="main-content" class="row align-items-end">
-    <div class="col-md-3 border-right">
-      <div class="row">
-        <div class="col-md-10 offset-md-1">
-          <div class="text-center">
-            <img src="{{ url_for('static', filename='img/avatar-example.png') }}" alt="grandpy-avatar" class="img-fluid img-circle">
-            <p>Avatar du papi</p>
-          </div>
+  <div id="main-container" class="global-element">
+    <div id="avatar-container" class="main-element">
+      <div id="avatar-card" class="avatar-element card">
+        <img src="{{ url_for('static', filename='img/avatar-example.png') }}" alt="grandpy-avatar" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">GrandPy</h5>
+          <p class="card-text">Tu souhaites aller quelques part mais tu n'as pas l'adresse? Demande-moi!</p>
         </div>
       </div>
     </div>
-    <div class="col-md-9">
-        <div class="row">
-          <div class="col-md-12">
-                <p>Partie historique des messages</p>
-          </div>
-        </div>
-        <div class="row">
-          <form class="" action="" method="">
+    <div id="message-container" class="main-element">
+      <div id="message-title" class="message-element">
+        <div id="online-circle" class="message-title-element"></div>
+        <div class="message-title-element">GrandPy</div>
+      </div>
+      <div id="message-historic" class="message-element">
+        <p>Historique des échanges</p>
+      </div>
+      <div id="message-input" class="message-element">
+        <div id="message-field">
+          <form id="form-container" action="" method="" class="message-field-element">
             {{ form.hidden_tag() }}
-            <div class="input-group">
-              {{ form.message.label(class="sr-only") }}
-              {{ form.message(class="form-control", placeholder="message") }}
-              <div class="input-group-btn">
-                {{ form.submit(class="btn", id="submit-button") }}
-              </div>
-            </div>
+            {{ form.message(class="form-element", placeholder="Ecris ton message") }}
+            {{ form.submit(class="form-element", value="envoyer") }}
           </form>
+
         </div>
+      </div>
     </div>
   </div>
 {% endblock %}

@@ -27,45 +27,42 @@
         <button id="info-button" class="message-nav-element">INFOS</button>
       </nav>
 
-      {# Where discussion between user and grandpy is printed #}
+      {# Where Messages and informations are done #}
       <div id="message-content" class="message-element">
         <div id="info-container" class="content-element">
           <div id="avatar-profile" class="info-element">
-          <div>
-          <div id="" class="info-element">
+            photo
           </div>
           <div id="" class="info-element">
+            description
+          </div>
+          <div id="" class="info-element">
+            projet
           </div>
         </div>
         <div id="chat-container" class="content-element">
-          chat section
+          {# All the messages realized during discussions #}
+          <div id="message-historic" class="chat-element">
+            historique des messages
+          </div>
+          {# GrandPy Status Treatment - if he thinks, write, or nothing #}
+          <div id="message-status" class="chat-element">
+              <div id="status-text" class="message-status-element">laisse moi réfléchir</div>
+              <div id="status-loading" class="message-status-element">...</div>
+          </div>
+
+          {# Block where user writes messages #}
+          <div id="message-input" class="chat-element">
+            <form id="form-container" action="" method="" class="message-input-element">
+              {{ form.hidden_tag() }}
+              {{ form.message(class="form-element", placeholder="Ecris ton message") }}
+              {{ form.submit(class="form-element", id="submit-button", value="envoyer") }}
+            </form>
+          </div>
         </div>
       </div>
 
-      {# GrandPy Status Treatment - if he thinks, write, or nothing #}
-      <div id="message-status" class="message-element">
-          <div id="status-text" class="message-status-element">laisse moi réfléchir</div>
-          <div id="status-loading" class="message-status-element">...</div>
-      </div>
 
-      {# Block where user writes messages #}
-
-      <div id="message-input" class="message-element">
-        <form id="form-container" action="" method="" class="message-input-element">
-          {{ form.hidden_tag() }}
-          {{ form.message(class="form-element", placeholder="Ecris ton message") }}
-          {{ form.submit(class="form-element", id="submit-button", value="envoyer") }}
-        </form>
-      {#
-        <div id="message-field" class="message-input-element">
-          <form id="form-container" action="" method="" class="message-field-element">
-            {{ form.hidden_tag() }}
-            {{ form.message(class="form-element", placeholder="Ecris ton message") }}
-            {{ form.submit(class="form-element", value="ENVOYER") }}
-          </form>
-        </div>
-       #}
-      </div>
     </div>
   </div>
 {% endblock %}

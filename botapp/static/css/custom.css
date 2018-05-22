@@ -89,14 +89,6 @@ h1 {
   flex: 1;
 }
 
-.message-element:nth-child(4) {
-
-}
-
-.message-element:nth-child(5) {
-
-}
-
 /* From Message Content Configuration: Title configuration */
 
 #message-title {
@@ -160,13 +152,27 @@ h1 {
 }
 
 #info-container {
-
+  display: flex;
+  flex-direction: column;
 }
+
+.info-element:nth-child(1) {
+}
+.info-element:nth-child(2) {}
+.info-element:nth-child(3) {}
 
 #chat-container {
   display: none;
+  flex-direction: column;
 }
-/* From Message Content Configuration: Status configuration */
+
+.chat-element:nth-child(1) {
+  flex:1;
+}
+.chat-element:nth-child(2) {}
+.chat-element:nth-child(3) {}
+
+/* From Chat Content Configuration: Status configuration */
 
 #message-status {
   display: flex;
@@ -179,9 +185,10 @@ h1 {
 
 }
 
-/* From Message Content Configuration: Form configuration */
+/* From Chat Content Configuration: Form configuration */
 
 #message-input {
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

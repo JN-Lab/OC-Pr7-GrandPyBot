@@ -44,7 +44,7 @@
         <form id="form-container" action="" method="" class="message-input-element">
           {{ form.hidden_tag() }}
           {{ form.message(class="form-element", placeholder="Ecris ton message") }}
-          {{ form.submit(class="form-element", value="envoyer") }}
+          {{ form.submit(class="form-element", id="submit-button", value="envoyer") }}
         </form>
       {#
         <div id="message-field" class="message-input-element">

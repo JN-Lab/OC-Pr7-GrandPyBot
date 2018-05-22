@@ -31,7 +31,13 @@
       <div id="message-content" class="message-element">
         <div id="info-container" class="content-element">
           <div id="avatar-profile" class="info-element">
-            photo
+            <div id="avatar-image" class="avatar-element">
+              <img src="{{ url_for('static', filename='img/avatar-example.png') }}" alt="grandpy-avatar" class="">
+            </div>
+            <div id="avatar-description" class="avatar-element">
+              <div class="avatar-description-element"><p id="avatar-name">GrandPy Bot</p></div>
+              <div  class="avatar-description-element"><p id="avatar-job">Dream GrandFather</p></div>
+            </div>
           </div>
           <div id="" class="info-element">
             description

@@ -1,3 +1,10 @@
+/* Block Structure Global Overview
+  html & body
+    #--> global container
+      #--> TO DO
+ */
+
+
 /* Global confguration */
 html, body {
   background-image: linear-gradient(to right bottom, #a3bded, #95b2e3, #86a7da, #789cd0, #6991c7);
@@ -65,10 +72,6 @@ h1 {
   margin-right: 20px;
 }
 
-.avatar-element {
-  background-color: yellow;
-}
-
 /* From Main Content : Message Content Configuration */
 #message-container {
   background-color: #FFFFFF;
@@ -123,6 +126,7 @@ h1 {
 }
 
 .message-nav-element {
+  background: none;
   flex: auto;
   border: none;
   font-weight: bold;
@@ -130,6 +134,7 @@ h1 {
 }
 
 .message-nav-element:hover {
+  background-color: #CFD8DC;
   color: #F9AA33;
   cursor: pointer;
 }
@@ -151,8 +156,10 @@ h1 {
   flex: 1;
 }
 
+/* From Message Content : Info Configuration */
+
 #info-container {
-  display: flex;
+  display: flex; /* None by default */
   flex-direction: column;
 }
 
@@ -160,6 +167,46 @@ h1 {
 }
 .info-element:nth-child(2) {}
 .info-element:nth-child(3) {}
+
+#avatar-profile {
+  background-color: #CFD8DC;
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar-element:nth-child(1) {
+  flex: 2;
+}
+.avatar-element:nth-child(2) {
+  flex: 3;
+}
+
+#avatar-image > img {
+  max-width: 100%;
+  height: auto;
+}
+
+#avatar-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #232F34;
+
+  padding-left: 5px;
+}
+
+.avatar-description-element {
+  line-height: 10px;
+}
+
+#avatar-name {
+  text-align: left;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+
+/* From Message Content : Chat Configuration */
 
 #chat-container {
   display: none;

@@ -63,7 +63,8 @@ formElt.addEventListener("submit", function(e) {
 
   ajaxPost("http://127.0.0.1:5000/treatment", data,
     function(response) {
-      console.log(response)
+      console.log(data);
+      console.log(JSON.parse(response));
     },
     true
   );

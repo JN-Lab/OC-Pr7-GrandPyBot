@@ -1,4 +1,7 @@
-from botapp.utils import MessageParser
+#! /usr/bin/env python3
+# coding: utf-8
+from botapp.utils.message_parse import MessageParser
 
 class TestMessageParser:
-    pass
+    def test_test(*args):
+        pass

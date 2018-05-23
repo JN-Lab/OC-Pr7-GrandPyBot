@@ -2,15 +2,6 @@
 
 {% block content %}
   <div id="main-container" class="global-element">
-    <div id="avatar-container" class="main-element">
-      <div id="avatar-card" class="avatar-element card">
-        <img src="{{ url_for('static', filename='img/avatar-example.png') }}" alt="grandpy-avatar" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">GrandPy</h5>
-          <p class="card-text">Tu souhaites aller quelques part mais tu n'as pas l'adresse? Demande-moi!</p>
-        </div>
-      </div>
-    </div>
 
     {# Message Card #}
     <div id="message-container" class="main-element">
@@ -39,11 +30,14 @@
               <div  class="avatar-description-element"><p id="avatar-job">Dream GrandFather</p></div>
             </div>
           </div>
-          <div id="" class="info-element">
-            description
+          <div id="project-description" class="info-element">
+            <p>GrandPy Bot est une application réalisée dans le cadre de la formation
+            Développeur d'Application Python proposée par Openclassrooms.</br>
+            Réalisé par Julien Nuellas</p>
           </div>
-          <div id="" class="info-element">
-            projet
+          <div id="social-link" class="info-element">
+            <div><a href="https://github.com/JN-Lab/OC-Pr7-GrandPyBot" class="" target="_blank"><i class="fab fa-github fa-3x"></i></a></div>
+            <div><a href="https://www.linkedin.com/in/julien-nuellas/" class="" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a></div>
           </div>
         </div>
         <div id="chat-container" class="content-element">

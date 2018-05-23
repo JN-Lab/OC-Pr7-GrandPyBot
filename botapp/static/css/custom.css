@@ -27,7 +27,8 @@ html, body {
 
 .global-element:nth-child(2){
   width: 100%;
-  max-width: 1000px;
+  max-width: 600px;
+  max-height: 800px;
   flex: 1;
 }
 
@@ -56,10 +57,6 @@ h1 {
 
 .main-element:nth-child(1){
   flex: 1;
-}
-
-.main-element:nth-child(2){
-  flex: 2;
 }
 
 /* From Main Content : Avatar Content Configuration */
@@ -121,7 +118,7 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: #FFFFFF;
+  background-color: #CFD8DC;
   height: 50px;
 }
 
@@ -134,17 +131,25 @@ h1 {
 }
 
 .message-nav-element:hover {
-  background-color: #CFD8DC;
+  background-color: #FFFFFF;
   color: #F9AA33;
   cursor: pointer;
 }
 
+#chat-button {
+  background-color: #FFFFFF;
+  color: #F9AA33;
+}
+
+#info-button {
+  background-color: none;
+}
 /* From Message Content Configuration: Historic configuration */
 
 #message-content {
   display: flex;
   flex-direction: column;
-  background-color: #CFD8DC;
+  background-color: #FFFFFF;
 
 }
 
@@ -159,7 +164,7 @@ h1 {
 /* From Message Content : Info Configuration */
 
 #info-container {
-  display: flex; /* None by default */
+  display: none; /* None by default */
   flex-direction: column;
 }
 
@@ -169,7 +174,6 @@ h1 {
 .info-element:nth-child(3) {}
 
 #avatar-profile {
-  background-color: #CFD8DC;
   display: flex;
   flex-direction: row;
 }
@@ -181,9 +185,15 @@ h1 {
   flex: 3;
 }
 
+#avatar-image {
+  padding: 20px;
+}
+
 #avatar-image > img {
   max-width: 100%;
   height: auto;
+  border: solid;
+  border-radius: 50%;
 }
 
 #avatar-description {
@@ -203,13 +213,27 @@ h1 {
   text-align: left;
   font-weight: bold;
   font-size: 25px;
+  color: #F9AA33;
 }
 
+#project-description > p {
+  text-align: center;
+}
+
+#social-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.fab {
+  color: #F9AA33;
+}
 
 /* From Message Content : Chat Configuration */
 
 #chat-container {
-  display: none;
+  display: flex;
   flex-direction: column;
 }
 

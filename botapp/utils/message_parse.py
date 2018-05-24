@@ -10,7 +10,9 @@ class MessageParser:
         return message
 
     def remove_useless_words(self, message):
+        # probleme sur lalgo quand on doit supprimer deux mots qui se suivent. Logique...
         split_message = message.lower().split()
+        print(split_message)
         for word in split_message:
             if word in common_words:
                 split_message.remove(word)
@@ -18,7 +20,14 @@ class MessageParser:
         final_message = ' '.join(split_message)
         return final_message
 
-    def remove_civilities(self):
-        welcome_word = ["bonjour", "salut", "bonsoir", "hello", "hi", "coucou",
-                        "grandpy", "bot", "programme", "application", "robot",
-                        "s'il te plait", "s'il vous plait", "please", "svp", "merci"]
+    def remove_civilities(self, message):
+        # Meme probleme qu'au dessus
+        message = self.remove_punctuation(message)
+        split_message = message.lower().split()
+        print(split_message)
+        for word in split_message:
+            if word in welcome_words:
+                split_message.remove(word)
+
+        final_message = ' '.join(split_message)
+        return final_message

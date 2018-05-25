@@ -32,7 +32,6 @@ class TestMessageParser:
         assert self.PARSER.remove_accents(self.MESSAGE4) == "Je veux aller visiter la cathedrale de notre-dame s'il vous plait."
         assert self.PARSER.remove_accents(self.MESSAGE5) == "Bonjour, quelle est l'adresse de l'hopital Georges Pompidou?"
 
-    # just integrate remove_punctuation + remove_accents integrated in function
     def test_remove_useless_words(self):
         assert self.PARSER.remove_useless_words(self.MESSAGE1) == "trouve tour eiffel"
         assert self.PARSER.remove_useless_words(self.MESSAGE2) == "connais adresse opera paris"
@@ -47,6 +46,7 @@ class TestMessageParser:
         assert self.PARSER.split_by_keywords(self.MESSAGE4) == "la cathédrale de notre-dame s'il vous plait."
         assert self.PARSER.split_by_keywords(self.MESSAGE5) == "de l'hôpital georges pompidou?"
 
+    # Keep only this test in the end
     def test_identify_location(self):
         assert self.PARSER.identify_location(self.MESSAGE1) == "tour eiffel"
         assert self.PARSER.identify_location(self.MESSAGE2) == "opera paris"

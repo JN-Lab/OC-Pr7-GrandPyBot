@@ -6,8 +6,13 @@ from string import punctuation
 from .stop_words import common_words, welcome_words
 
 class MessageParser:
+    """
+    This class is one of the main treatment of this programm.
+    It is used to identify the location the user is looking for from his message.
+    """
 
     def remove_punctuation(self, message):
+        """This method removes the punctuation from a message"""
         final_message = []
         for letter in message:
             if letter not in punctuation or letter == "-":
@@ -22,7 +27,10 @@ class MessageParser:
         return final_message
 
     def remove_stop_words(self, message):
-        # probleme sur lalgo quand on doit supprimer deux mots qui se suivent. Logique...
+        """
+        This method removes words from a message
+        according free useless stop words list
+        """
         split_message = message.lower().split()
         final_message = []
         print(split_message)
@@ -33,6 +41,7 @@ class MessageParser:
         return final_message
 
     def remove_accents(self, message):
+        """This method removes the accent from a message"""
         try:
             message = unicode(message, 'utf-8')
         except NameError:
@@ -43,6 +52,13 @@ class MessageParser:
         return str(message)
 
     def remove_useless_words(self, message):
+        """
+        This method removes all the useless words from a message
+        It includes different methods from MessageParser class.
+        First, it cleans message by removing punctuation and accents.
+        Secondly, it cleans message by removing common words from a free list.
+        Finally, it removes all the welcome words.
+        """
         message.lower()
         message = self.remove_punctuation(message)
         message = self.remove_accents(message)
@@ -56,7 +72,12 @@ class MessageParser:
         final_message =' '.join(final_message)
         return final_message
 
-    def remove_location_keywords(self, message):
+    def split_by_keywords(self, message):
+        """
+        This method cleans a message asking a location by targeting specific
+        keywords linked to this kind of message and remove all the previous words
+        from it
+        """
         message = message.lower().split()
         final_message = []
         for word in message:
@@ -67,5 +88,12 @@ class MessageParser:
         final_message = ' '.join(final_message)
         return final_message
 
-    def remove_question_structure(self, message):
-        pass
+    def identify_location(self, message):
+        """
+        This is the global method integrating all the treatment methods from
+        this class. It is the public method that will be used in the programm.
+        """
+        message = self.split_by_keywords(message)
+        message = self.remove_useless_words(message)
+
+        return message

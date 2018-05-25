@@ -40,18 +40,16 @@ class TestMessageParser:
         assert self.PARSER.remove_useless_words(self.MESSAGE4) == "veux aller visiter cathedrale notre-dame"
         assert self.PARSER.remove_useless_words(self.MESSAGE5) == "adresse hopital georges pompidou"
 
-    def test_remove_location_keywords(self):
-        assert self.PARSER.remove_location_keywords(self.MESSAGE1) == "la tour eiffel?"
-        assert self.PARSER.remove_location_keywords(self.MESSAGE2) == "de l'opéra de paris?"
-        assert self.PARSER.remove_location_keywords(self.MESSAGE3) == "au 59 boulevard de strasbourg, 75010 paris s'il te plaît."
-        assert self.PARSER.remove_location_keywords(self.MESSAGE4) == "la cathédrale de notre-dame s'il vous plait."
-        assert self.PARSER.remove_location_keywords(self.MESSAGE5) == "de l'hôpital georges pompidou?"
+    def test_split_by_keywords(self):
+        assert self.PARSER.split_by_keywords(self.MESSAGE1) == "la tour eiffel?"
+        assert self.PARSER.split_by_keywords(self.MESSAGE2) == "de l'opéra de paris?"
+        assert self.PARSER.split_by_keywords(self.MESSAGE3) == "au 59 boulevard de strasbourg, 75010 paris s'il te plaît."
+        assert self.PARSER.split_by_keywords(self.MESSAGE4) == "la cathédrale de notre-dame s'il vous plait."
+        assert self.PARSER.split_by_keywords(self.MESSAGE5) == "de l'hôpital georges pompidou?"
 
-    """
     def test_identify_location(self):
-        assert self.PARSER.remove_question_structure(self.MESSAGE1) == "tour eiffel"
-        assert self.PARSER.remove_question_structure(self.MESSAGE2) == "opera paris"
-        assert self.PARSER.remove_question_structure(self.MESSAGE3) == "59 boulevard strasbourg 75010 paris"
-        assert self.PARSER.remove_question_structure(self.MESSAGE4) == "cathedrale dame"
-        assert self.PARSER.remove_question_structure(self.MESSAGE5) == "hopital georges pompidou"
-    """
+        assert self.PARSER.identify_location(self.MESSAGE1) == "tour eiffel"
+        assert self.PARSER.identify_location(self.MESSAGE2) == "opera paris"
+        assert self.PARSER.identify_location(self.MESSAGE3) == "59 boulevard strasbourg 75010 paris"
+        assert self.PARSER.identify_location(self.MESSAGE4) == "cathedrale notre-dame"
+        assert self.PARSER.identify_location(self.MESSAGE5) == "hopital georges pompidou"

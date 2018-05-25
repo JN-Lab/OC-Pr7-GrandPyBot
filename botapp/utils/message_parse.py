@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 # coding: utf-8
 import unicodedata
+import re
 from string import punctuation
 from .stop_words import common_words, welcome_words
 
@@ -9,10 +10,10 @@ class MessageParser:
     def remove_punctuation(self, message):
         final_message = []
         for letter in message:
-            if letter not in punctuation:
+            if letter not in punctuation or letter == "-":
                 final_message.append(letter)
             else:
-                if letter == "'" or letter == "-":
+                if letter == "'":
                     letter = " "
                     final_message.append(letter)
 
@@ -20,7 +21,7 @@ class MessageParser:
 
         return final_message
 
-    def remove_useless_words(self, message):
+    def remove_stop_words(self, message):
         # probleme sur lalgo quand on doit supprimer deux mots qui se suivent. Logique...
         split_message = message.lower().split()
         final_message = []
@@ -28,7 +29,6 @@ class MessageParser:
         for word in split_message:
             if word not in common_words:
                 final_message.append(word)
-        print(final_message)
         final_message = ' '.join(final_message)
         return final_message
 
@@ -42,12 +42,11 @@ class MessageParser:
         message = message.decode('utf-8')
         return str(message)
 
-    def remove_civilities(self, message):
-        # Meme probleme qu'au dessus
+    def remove_useless_words(self, message):
         message.lower()
-        message = self.remove_accents(message)
         message = self.remove_punctuation(message)
-        message = self.remove_useless_words(message)
+        message = self.remove_accents(message)
+        message = self.remove_stop_words(message)
         split_message = message.split()
         final_message = []
         for word in split_message:
@@ -56,3 +55,17 @@ class MessageParser:
 
         final_message =' '.join(final_message)
         return final_message
+
+    def remove_location_keywords(self, message):
+        message = message.lower().split()
+        final_message = []
+        for word in message:
+            final_message.append(word)
+            match = re.search(r'\'?ad+res+e|trouve|^con+ai|^visi|^al+e|^voi[r|s]|^sa[is|v]|^voudrais|^veu[x|s]|^souhait', word)
+            if match:
+                final_message = []
+        final_message = ' '.join(final_message)
+        return final_message
+
+    def remove_question_structure(self, message):
+        pass

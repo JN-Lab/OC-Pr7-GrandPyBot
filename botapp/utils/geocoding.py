@@ -4,11 +4,20 @@ from config import Config
 import requests
 
 class GeocodingLocation:
+    """
+    This class will get gps coordinates from Google Geocoding API according
+    the location asked by the user in his message.
+    """
 
     def __init__(self):
         self.api_key = Config.GEOCODING_GOOGLE_API_KEY
 
     def get_location_info(self, location):
+        """
+        The methods requests Google Geocoding API, gets only the necessary informations
+        and sends back them into a dictionnary
+        """
+
         location = location.replace(" ", "+")
 
         location_info = {
@@ -20,8 +29,12 @@ class GeocodingLocation:
 
         url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&components=country:FR&key=" + self.api_key
 
-        req = requests.get(url)
-        data = req.json()
+        try:
+            req = requests.get(url)
+            data = req.json()
+        except:
+            location_info["status"] = "REQUEST PROBLEM"
+
 
         try:
             if data["results"][0]["geometry"]["location_type"] != "APPROXIMATE":

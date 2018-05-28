@@ -6,8 +6,19 @@ from io import BytesIO
 import json
 
 class TestGeocodingLocation:
+    """
+    This class tests the results get after requesting Google Geocoding API.
+    There are two tests:
+        - One with coming from a request with a real location
+        - One with coming from a request with a non real location
+    """
 
     def test_request_address_success(self, monkeypatch):
+        """
+        This methods tests the result coming from a request with a real location.
+        The monkeypatch fixture is used to simulate the response -> req_result
+        """
+
         # JSON response from the Google Geocoding API
         req_result = {
             "results" : [
@@ -41,6 +52,11 @@ class TestGeocodingLocation:
         assert script.get_location_info("hopital georges pompidou") == results
 
     def test_request_address_false(self, monkeypatch):
+        """
+        This methods tests the result coming from a request with a non real location.
+        The monkeypatch fixture is used to simulate the response -> req_result
+        """
+
         # JSON response from the Google Geocoding API
         req_result = {
             "results" : [

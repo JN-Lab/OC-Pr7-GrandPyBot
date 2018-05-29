@@ -33,7 +33,6 @@ class MessageParser:
         """
         split_message = message.lower().split()
         final_message = []
-        print(split_message)
         for word in split_message:
             if word not in common_words:
                 final_message.append(word)

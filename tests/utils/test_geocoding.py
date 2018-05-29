@@ -13,6 +13,8 @@ class TestGeocodingLocation:
         - One with coming from a request with a non real location
     """
 
+    SCRIPT = GeocodingLocation()
+
     def test_request_address_success(self, monkeypatch):
         """
         This methods tests the result coming from a request with a real location.
@@ -47,9 +49,8 @@ class TestGeocodingLocation:
         def mockreturn(request):
             return BytesIO(json.dumps(req_result).encode())
 
-        script = GeocodingLocation()
         monkeypatch.setattr(requests, 'Response', mockreturn)
-        assert script.get_location_info("hopital georges pompidou") == results
+        assert self.SCRIPT.get_location_info("hopital georges pompidou") == results
 
     def test_request_address_false(self, monkeypatch):
         """
@@ -85,6 +86,5 @@ class TestGeocodingLocation:
         def mockreturn(request):
             return json.JSONEncoder().encode(req_result)
 
-        req = GeocodingLocation()
         monkeypatch.setattr(requests, 'Response', mockreturn)
-        assert req.get_location_info("fake location") == results
+        assert self.SCRIPT.get_location_info("fake location") == results

@@ -7,6 +7,8 @@ import json
 
 class TestMediaWikiInfo:
 
+    SCRIPT = MediaWikiInfo()
+
     def test_request_info_success(self, monkeypatch):
 
         # JSON response from the Media Wiki API
@@ -48,9 +50,8 @@ class TestMediaWikiInfo:
         def mockreturn(request):
             return BytesIO(json.dumps(req_result).encode())
 
-        script = MediaWikiInfo()
         monkeypatch.setattr(requests, 'Response', mockreturn)
-        assert script.get_story_info(48.8388508, 2.2740328) == results
+        assert self.SCRIPT.get_story_info(48.8388508, 2.2740328) == results
 
     def test_request_info_false(self, monkeypatch):
         # JSON response from the Media Wiki API
@@ -74,6 +75,5 @@ class TestMediaWikiInfo:
         def mockreturn(request):
             return BytesIO(json.dumps(req_result).encode())
 
-        script = MediaWikiInfo()
         monkeypatch.setattr(requests, 'Response', mockreturn)
-        assert script.get_story_info(9999, 9999) == results
+        assert self.SCRIPT.get_story_info(9999, 9999) == results

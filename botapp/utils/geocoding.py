@@ -40,11 +40,11 @@ class GeocodingLocation:
                 location_info["address"] = data["results"][0]["formatted_address"]
                 location_info["latitude"] = data["results"][0]["geometry"]["location"]["lat"]
                 location_info["longitude"] = data["results"][0]["geometry"]["location"]["lng"]
-                location_info["status"] = "found"
+                location_info["status"] = "FOUND"
             else:
                 raise KeyError
         except KeyError:
-            location_info["status"] = "not_found"
+            location_info["status"] = "NOT_FOUND"
         except:
             location_info["status"] = "REQUEST_PROBLEM"
 

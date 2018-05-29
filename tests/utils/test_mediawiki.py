@@ -42,7 +42,7 @@ class TestMediaWikiInfo:
             "title" : "Hôpital européen Georges-Pompidou",
             "intro" : """L'hôpital européen Georges-Pompidou (HEGP) est un hôpital de l'Assistance publique - hôpitaux de Paris (AP-HP). Il est situé entre les rues Leblanc et du Professeur-Florian-Delbarre dans le 15e arrondissement de Paris, au bord de la Seine non loin du pont du Garigliano, à proximité du parc André-Citroën et des locaux de France Télévisions.""",
             "page_link" : "https://fr.wikipedia.org/wiki/Hôpital_européen_Georges-Pompidou",
-            "status" : "found"
+            "status" : "FOUND"
         }
 
         def mockreturn(request):
@@ -51,3 +51,29 @@ class TestMediaWikiInfo:
         script = MediaWikiInfo()
         monkeypatch.setattr(requests, 'Response', mockreturn)
         assert script.get_story_info(48.8388508, 2.2740328) == results
+
+    def test_request_info_false(self, monkeypatch):
+        # JSON response from the Media Wiki API
+        req_result = {
+            "error": {
+                "code": "invalid-coord",
+                "info": "Invalid coordinate provided",
+                "*": "See https://fr.wikipedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce&gt; for notice of API deprecations and breaking changes."
+            },
+            "servedby": "mw1287"
+        }
+
+        # Result we're looking for
+        results = {
+            "title" : "",
+            "intro" : "",
+            "page_link" : "",
+            "status" : "NOT_FOUND"
+        }
+
+        def mockreturn(request):
+            return BytesIO(json.dumps(req_result).encode())
+
+        script = MediaWikiInfo()
+        monkeypatch.setattr(requests, 'Response', mockreturn)
+        assert script.get_story_info(9999, 9999) == results

@@ -41,7 +41,7 @@ class TestGeocodingLocation:
             "address" : "20 Rue Leblanc, 75015 Paris, France",
             "latitude" : 48.8388508,
             "longitude" : 2.2740328,
-            "status" : "found"
+            "status" : "FOUND"
         }
 
         def mockreturn(request):
@@ -79,7 +79,7 @@ class TestGeocodingLocation:
             "address" : "",
             "latitude" : 0,
             "longitude" : 0,
-            "status" : "not_found"
+            "status" : "NOT_FOUND"
         }
 
         def mockreturn(request):

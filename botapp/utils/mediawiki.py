@@ -43,11 +43,11 @@ class MediaWikiInfo:
                 story_info["title"] = data["query"]["pages"][necessary_data[0]]["title"]
                 story_info["intro"] = data["query"]["pages"][necessary_data[0]]["extract"]
                 story_info["page_link"] = "https://fr.wikipedia.org/wiki/" + data["query"]["pages"][necessary_data[0]]["title"].replace(" ", "_")
-                story_info["status"] = "found"
+                story_info["status"] = "FOUND"
             else:
                 raise KeyError
         except KeyError:
-            story_info["status"] = "not_found"
+            story_info["status"] = "NOT_FOUND"
         except:
             story_info["status"] = "REQUEST_PROBLEM"
 

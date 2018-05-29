@@ -1,11 +1,19 @@
 #! /usr/bin/env python3
 # coding: utf-8
-from collections import OrderedDict
 import requests
 
 class MediaWikiInfo:
+    """
+    This class will get information from WikiMedia API thanks to GPS coordinates
+    coming from Google Geocoding API.
+    """
 
     def get_story_info(self, latitude, longitude):
+        """
+        This method requests WikiMedia API to get the wikipedia introduction of
+        the location the user is looking for
+        """
+
         story_info = {
             "title": "",
             "intro": "",
@@ -13,16 +21,24 @@ class MediaWikiInfo:
             "status" : ""
         }
 
-        url = "https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&generator=geosearch&ggscoord=48.8388508|2.2740328&ggsradius=100&format=json"
+        payload = {
+            "action" : 'query',
+            "prop" : "extracts",
+            "exintro" : "",
+            "explaintext" : "",
+            "generator" : "geosearch",
+            "ggscoord" : str(latitude) + "|" + str(longitude),
+            "ggsradius" : "100",
+            "format" : "json"
+        }
 
         try:
-            req = requests.get(url)
+            req = requests.get("https://fr.wikipedia.org/w/api.php", params=payload)
             data = req.json()
-        except:
-            story_info["status"] = "REQUEST_PROBLEM"
-
-        try:
             if data["query"]["pages"]:
+                #necessary_data is generated in order to access to the first page
+                #returned by the API thanks to its index because the items are
+                #pageids, so not known
                 necessary_data = list(data["query"]["pages"])
                 story_info["title"] = data["query"]["pages"][necessary_data[0]]["title"]
                 story_info["intro"] = data["query"]["pages"][necessary_data[0]]["extract"]
@@ -31,8 +47,8 @@ class MediaWikiInfo:
             else:
                 raise KeyError
         except KeyError:
-            story_info["status"] = "not found"
+            story_info["status"] = "not_found"
+        except:
+            story_info["status"] = "REQUEST_PROBLEM"
 
-        print(necessary_data)
-        print(story_info)
         return story_info

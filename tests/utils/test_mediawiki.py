@@ -8,7 +8,7 @@ import json
 class TestMediaWikiInfo:
 
     def test_request_info_success(self, monkeypatch):
-        
+
         # JSON response from the Media Wiki API
         req_result = {
             "batchcomplete": "",

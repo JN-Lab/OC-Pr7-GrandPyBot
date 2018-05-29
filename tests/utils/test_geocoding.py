@@ -79,7 +79,7 @@ class TestGeocodingLocation:
             "address" : "",
             "latitude" : 0,
             "longitude" : 0,
-            "status" : "not found"
+            "status" : "not_found"
         }
 
         def mockreturn(request):

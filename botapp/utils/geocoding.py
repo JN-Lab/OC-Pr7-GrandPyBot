@@ -27,16 +27,15 @@ class GeocodingLocation:
             "status" : ""
         }
 
-        url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&components=country:FR&key=" + self.api_key
+        payload = {
+            "address" : location,
+            "components" : "country:FR",
+            "key" : self.api_key
+        }
 
         try:
-            req = requests.get(url)
+            req = requests.get("https://maps.googleapis.com/maps/api/geocode/json", params=payload)
             data = req.json()
-        except:
-            location_info["status"] = "REQUEST_PROBLEM"
-
-
-        try:
             if data["results"][0]["geometry"]["location_type"] != "APPROXIMATE":
                 location_info["address"] = data["results"][0]["formatted_address"]
                 location_info["latitude"] = data["results"][0]["geometry"]["location"]["lat"]
@@ -45,6 +44,8 @@ class GeocodingLocation:
             else:
                 raise KeyError
         except KeyError:
-            location_info["status"] = "not found"
+            location_info["status"] = "not_found"
+        except:
+            location_info["status"] = "REQUEST_PROBLEM"
 
         return location_info

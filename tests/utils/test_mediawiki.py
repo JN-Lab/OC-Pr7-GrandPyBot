@@ -8,6 +8,7 @@ import json
 class TestMediaWikiInfo:
 
     def test_request_info_success(self, monkeypatch):
+        
         # JSON response from the Media Wiki API
         req_result = {
             "batchcomplete": "",
@@ -39,13 +40,9 @@ class TestMediaWikiInfo:
         # Result we're looking for
         results = {
             "title" : "Hôpital européen Georges-Pompidou",
-            "intro" : """L'hôpital européen Georges-Pompidou (HEGP) est un hôpital
-                        de l'Assistance publique - hôpitaux de Paris (AP-HP). Il est
-                        situé entre les rues Leblanc et du Professeur-Florian-Delbarre
-                        dans le 15e arrondissement de Paris, au bord de la Seine non loin du pont
-                        du Garigliano, à proximité du parc André-Citroën et des
-                        locaux de France Télévisions.""",
-            "page_link" : "https://fr.wikipedia.org/wiki/H%C3%B4pital_europ%C3%A9en_Georges-Pompidou"
+            "intro" : """L'hôpital européen Georges-Pompidou (HEGP) est un hôpital de l'Assistance publique - hôpitaux de Paris (AP-HP). Il est situé entre les rues Leblanc et du Professeur-Florian-Delbarre dans le 15e arrondissement de Paris, au bord de la Seine non loin du pont du Garigliano, à proximité du parc André-Citroën et des locaux de France Télévisions.""",
+            "page_link" : "https://fr.wikipedia.org/wiki/Hôpital_européen_Georges-Pompidou",
+            "status" : "found"
         }
 
         def mockreturn(request):

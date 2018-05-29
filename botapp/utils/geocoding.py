@@ -33,7 +33,7 @@ class GeocodingLocation:
             req = requests.get(url)
             data = req.json()
         except:
-            location_info["status"] = "REQUEST PROBLEM"
+            location_info["status"] = "REQUEST_PROBLEM"
 
 
         try:

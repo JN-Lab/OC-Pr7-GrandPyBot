@@ -11,29 +11,35 @@ html, body {
   font-family: 'Roboto', sans-serif;
   height: 100%;
   width: 100%;
+  margin: 0px;
+  overflow: hidden;
 }
 
 #global-container {
   display:flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  height: 100%;
   width: 100%;
 }
 
-.global-element:nth-child(1){
+#main-container { /* Only child from global-container */
   width: 100%;
-}
-
-.global-element:nth-child(2){
-  width: 100%;
+  height : 80%;
   max-width: 600px;
   max-height: 800px;
-  flex: 1;
+
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
 }
 
-.global-element:nth-child(3){
-  width: 100%;
+@media screen and (max-width: 600px) {
+
+  #main-container {
+    min-height: 100%;
+  }
+
 }
 
 /* Nav Configuration */
@@ -51,8 +57,6 @@ h1 {
   /* background-color: grey; */
   display: flex;
   flex-direction: row;
-  margin: 5px;
-  padding: 10px;
 }
 
 .main-element:nth-child(1){
@@ -74,8 +78,6 @@ h1 {
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .message-element:nth-child(1) {
@@ -242,6 +244,58 @@ h1 {
 }
 .chat-element:nth-child(2) {}
 .chat-element:nth-child(3) {}
+
+#message-historic {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow-y: auto;
+}
+
+.speech-element {
+
+}
+
+/* From Message Content : Speech Bubble Configuration */
+
+  .talk-bubble {
+    margin: 15px;
+    display: inline-block;
+    position: relative;
+  	width: auto;
+  	height: auto;
+  	background-color: #CFD8DC;
+  }
+
+  .round {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+  }
+
+  .tri-right.right-in:after{
+  	content: ' ';
+  	position: absolute;
+  	width: 0;
+  	height: 0;
+    left: auto;
+  	right: -20px;
+    top: 38px;
+  	bottom: auto;
+  	border: 12px solid;
+  	border-color: #CFD8DC transparent transparent #CFD8DC;
+  }
+
+  .talktext {
+    padding: 1em;
+    text-align: left;
+    line-height: 1em;
+  }
+  .talktext p{
+  /* remove webkit p margins */
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+  }
 
 /* From Chat Content Configuration: Status configuration */
 

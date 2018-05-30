@@ -28,6 +28,25 @@ infoButtonElt.addEventListener("click", function() {
 });
 
 // ----------------------------------
+// Message Bubble Creation
+// ----------------------------------
+
+function setUserSpeechBubble(message) {
+  var bubbleElt = document.createElement("div");
+  bubbleElt.className = "speech-element talk-bubble tri-right round right-in";
+  bubbleElt.style.marginLeft = "60px";
+
+  var speechBubbleElt = document.createElement("div");
+  speechBubbleElt.className = "talktext";
+
+  var textElt = document.createElement("p");
+  textElt.textContent = message;
+  speechBubbleElt.appendChild(textElt);
+  bubbleElt.appendChild(speechBubbleElt);
+  document.getElementById("message-historic").appendChild(bubbleElt);
+}
+
+// ----------------------------------
 // Ajax Interactions on Submit Button
 // ----------------------------------
 
@@ -60,6 +79,7 @@ var formElt = document.querySelector("form");
 
 formElt.addEventListener("submit", function(e) {
   var data = formElt.elements.message.value
+  setUserSpeechBubble(data);
 
   ajaxPost("http://127.0.0.1:5000/treatment", data,
     function(response) {

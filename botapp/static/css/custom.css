@@ -15,6 +15,10 @@ html, body {
   overflow: hidden;
 }
 
+h1 {
+  color: #F7F7FF;
+}
+
 #global-container {
   display:flex;
   flex-direction: row;
@@ -24,13 +28,43 @@ html, body {
   width: 100%;
 }
 
+.global-element:nth-child(1) {
+  flex: 4;
+  margin-left: 50px;
+}
+
+.global-element:nth-child(2) {
+  flex: 3;
+  margin-right: 50px;
+}
+
 #main-container { /* Only child from global-container */
+  display : flex;
+  flex-direction: row;
   width: 100%;
   height : 80%;
   max-width: 600px;
   max-height: 800px;
 
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+
+.main-element:nth-child(0){
+  flex: 1;
+}
+
+@media screen and (max-width: 1024px) {
+  #global-container {
+  }
+
+  #tagline-container {
+    display: none;
+  }
+
+  #main-container {
+    margin-right: 0px;
+  }
 
 }
 
@@ -42,39 +76,9 @@ html, body {
 
 }
 
-/* Nav Configuration */
-nav {
-  /* background-color: #577399; */
-}
-
-h1 {
-  color: #F7F7FF;
-}
-
-/* Main Content Configuration */
-
-#main-container {
-  /* background-color: grey; */
-  display: flex;
-  flex-direction: row;
-}
-
-.main-element:nth-child(1){
-  flex: 1;
-}
-
-/* From Main Content : Avatar Content Configuration */
-#avatar-container {
-  background-color: red;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-}
-
 /* From Main Content : Message Content Configuration */
 #message-container {
+  flex: 1;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
@@ -249,7 +253,6 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow-y: auto;
 }
 
 .speech-element {
@@ -259,7 +262,7 @@ h1 {
 /* From Message Content : Speech Bubble Configuration */
 
   .talk-bubble {
-    margin: 15px;
+    margin: 30px;
     display: inline-block;
     position: relative;
   	width: auto;

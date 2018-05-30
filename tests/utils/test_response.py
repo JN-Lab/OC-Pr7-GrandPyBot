@@ -32,6 +32,12 @@ class TestReponse:
             "status" : "COMPLETE"
         }
 
+        def mock_get_location_info():
+            return geocoding_results
+
+        monkeypatch.setattr(self.gps_seeker, 'get_location_info', mock_get_location_info)
+        monkeypatch.setattr(self.gps_seeker, 'get_location_info', mock_get_location_info)
+
         assert self.ANALYSE.get_info("Bonjour, quelle est l'adresse de l'hôpital Georges Pompidou?") == results
 
     def test_response_false_missing_location(self):

@@ -47,7 +47,7 @@ class TestGeocodingLocation:
         }
 
         def mockreturn(request):
-            return BytesIO(json.dumps(req_result).encode())
+            return json.dumps(req_result).encode()
 
         monkeypatch.setattr(requests, 'Response', mockreturn)
         assert self.SCRIPT.get_location_info("hopital georges pompidou") == results

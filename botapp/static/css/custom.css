@@ -177,7 +177,9 @@ h1 {
 .info-element:nth-child(1) {
 }
 .info-element:nth-child(2) {}
-.info-element:nth-child(3) {}
+.info-element:nth-child(3) {
+  align-self: flex-end;
+}
 
 #avatar-profile {
   display: flex;

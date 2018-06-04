@@ -8,6 +8,7 @@ There is only one page for this app
 from flask import render_template, url_for, jsonify, request
 from .app import app
 from .forms import MessageForm
+from .utils.response import Response
 
 @app.route('/')
 @app.route('/index/')
@@ -21,5 +22,5 @@ def message_back():
     message_entrant = {}
     if request.is_json:
         message_entrant = request.get_json()
-    #return jsonify({'sentence': 'test ajax routine'})
-    return jsonify(message_entrant)
+    treatment = Response()
+    return jsonify(treatment.get_info(message_entrant))

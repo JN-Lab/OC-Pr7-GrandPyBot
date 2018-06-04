@@ -246,10 +246,10 @@ h1 {
 }
 
 .chat-element:nth-child(1) {
+  overflow-y: scroll;
   flex:1;
 }
 .chat-element:nth-child(2) {}
-.chat-element:nth-child(3) {}
 
 #message-historic {
   display: flex;

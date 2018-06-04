@@ -3,10 +3,18 @@
 from botapp.utils.response import Response
 
 class TestReponse:
+    """
+    This class tests the results get after the use of the method get_info from
+    Response class.
+    """
 
     ANALYSE = Response()
 
     def test_response_success(self, monkeypatch):
+        """
+        This method tests the success path
+        """
+
         #geocoding dict return
         geocoding_results = {
             "address" : "20 Rue Leblanc, 75015 Paris, France",
@@ -44,6 +52,10 @@ class TestReponse:
         assert self.ANALYSE.get_info("Bonjour, quelle est l'adresse de l'hôpital Georges Pompidou?") == results
 
     def test_response_false_missing_location(self, monkeypatch):
+        """
+        This method tests the path where the message parser returns nothing
+        """
+
         #parse feature return
         parse_result = ""
 
@@ -66,6 +78,11 @@ class TestReponse:
         assert self.ANALYSE.get_info("Bonjour, comment allez-vous") == results
 
     def test_response_false_missing_geographic_info(self, monkeypatch):
+        """
+        This method tests the path where the Google geoconding api doesn't
+        return a precise location
+        """
+
         #geocoding dict return
         geocoding_results = {
             "address" : "",
@@ -93,6 +110,11 @@ class TestReponse:
         assert self.ANALYSE.get_info("Bonjour, quelle est l'adresse de fake location?") == results
 
     def test_response_false_missing_story_info(self, monkeypatch):
+        """
+        This method tests the path where the wikimedia API doesn't return
+        a story
+        """
+
         #geocoding dict return
         geocoding_results = {
             "address" : "20 Rue Leblanc, 75015 Paris, France",
@@ -131,6 +153,11 @@ class TestReponse:
         assert self.ANALYSE.get_info("Bonjour, je souhaite me rendre à eulerian?") == results
 
     def test_response_false_request_problem_location(self, monkeypatch):
+        """
+        This method tests the path where there is a request problem with
+        Google geocoding API
+        """
+
         geocoding_results = {
             "address" : "",
             "latitude" : 0,
@@ -156,6 +183,10 @@ class TestReponse:
         assert self.ANALYSE.get_info("Bonjour, quelle est l'adresse de la tour eiffel?") == results
 
     def test_response_false_request_problem_story(self, monkeypatch):
+        """
+        This method tests the path where there is a request problem with
+        Wikimedia API
+        """
         #geocoding dict return
         geocoding_results = {
             "address" : "20 Rue Leblanc, 75015 Paris, France",

@@ -5,6 +5,12 @@ from botapp.utils.geocoding import GeocodingLocation
 from botapp.utils.mediawiki import MediaWikiInfo
 
 class Response:
+    """
+    This class organizes all the operations the server has to do when a message
+    is sent by a user.
+    According the different message received by the other classes, this class
+    structurates a clear response for the front.
+    """
 
     def __init__(self):
         self.message_parser = MessageParser()
@@ -12,6 +18,10 @@ class Response:
         self.story_seeker = MediaWikiInfo()
 
     def get_info(self, message):
+        """
+        This is the only method of the class. It structurates all the needed operations
+        the server has to do to send a clear response to the front.
+        """
 
         infos = {
             "address" : "",

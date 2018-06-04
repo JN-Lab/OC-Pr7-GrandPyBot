@@ -43,7 +43,7 @@ function setUserSpeechBubble(message) {
   textElt.textContent = message;
   speechBubbleElt.appendChild(textElt);
   bubbleElt.appendChild(speechBubbleElt);
-  document.getElementById("message-historic").appendChild(bubbleElt);
+  document.getElementById("bubble-container").appendChild(bubbleElt);
 }
 
 // To customize on CSS first, then test it, then factorize for only on function --> setSpeechBubble(profile, message)

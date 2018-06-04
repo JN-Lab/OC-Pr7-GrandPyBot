@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
   <div id="tagline-container" class="global-element">
     <p>GrandPy Bot</p>
     <p>Demande-lui le lieu où tu souhaites te rendre <br> Et il te donnera toutes les informations nécessaires</p>
@@ -48,7 +47,9 @@
         <div id="chat-container" class="content-element">
           {# All the messages realized during discussions #}
           <div id="message-historic" class="chat-element">
-            {# where bubble will be pushed #}
+            <div id="bubble-container" class="historic-element">
+              {# where bubble will be pushed #}
+            </div>
           </div>
           {# GrandPy Status Treatment - if he thinks, write, or nothing #}
           <div id="message-status" class="chat-element">

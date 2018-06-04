@@ -2,7 +2,7 @@
 # coding: utf-8
 from botapp.utils.response import Response
 
-class TestReponse:
+class TestResponse:
     """
     This class tests the results get after the use of the method get_info from
     Response class.

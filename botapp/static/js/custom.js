@@ -56,14 +56,18 @@ function setSpeechBubble(profile, message) {
 // Manage the different response according JSON received
 // -----------------------------------------------------
 
-function setResponse(response) {
+function setResponse(response, formElt) {
   switch (response.status) {
   case "LOCATION_MISSING":
-    // Ask for information 
+    // Ask for information
+    setSpeechBubble("app", "Merci pour votre message. Dîtes moi où vous souhaitez aller?");
+    formElt.elements.message.value = "Je souhaiterais aller...";
     console.log("switch structure OK: " + response.status);
     break;
   case "WRONG_LOCATION":
     // ask for specific location + preintegrate message
+    setSpeechBubble("app", "Merci pour votre message. Je ne suis pas sûr d'avoir bien compris où vous souhaitez aller. Pouvez-vous répéter s'il vous plait?");
+    formElt.elements.message.value = "Je souhaiterais aller...";
     console.log("switch structure OK: " + response.status);
     break;
   case "COMPLETE":
@@ -121,19 +125,17 @@ formElt.addEventListener("submit", function(e) {
 
   if (data) {
     setSpeechBubble("user", data);
-    setSpeechBubble("app", "I am thinking");
 
     ajaxPost("http://127.0.0.1:5000/treatment", data,
       function(response) {
         console.log(data);
         console.log(JSON.parse(response));
-        setResponse(JSON.parse(response));
+        setResponse(JSON.parse(response), formElt);
       },
       true
     );
   } else {
-    setUserSpeechBubble("Veuillez indiquez votre recherche avant d'envoyer");
+    setSpeechBubble("app", "Veuillez indiquez votre recherche avant d'envoyer");
   }
-
   e.preventDefault();
 });

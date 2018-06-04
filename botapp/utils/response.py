@@ -1,8 +1,8 @@
 #! /usr/bin/env python3
 # coding: utf-8
-from .message_parse import MessageParser
-from .geocoding import GeocodingLocation
-from .mediawiki import MediaWikiInfo
+from botapp.utils.message_parse import MessageParser
+from botapp.utils.geocoding import GeocodingLocation
+from botapp.utils.mediawiki import MediaWikiInfo
 
 class Response:
 
@@ -50,5 +50,4 @@ class Response:
         else:
             infos["status"] = "LOCATION_MISSING"
 
-        print(geo_info)
         return infos

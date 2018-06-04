@@ -137,6 +137,7 @@ p {
   justify-content: center;
   background-color: #CFD8DC;
   height: 50px;
+  border-bottom: 1px solid #ccc;
 }
 
 .message-nav-element {
@@ -306,6 +307,19 @@ p {
   	border: 12px solid;
   	border-color: #CFD8DC transparent transparent #CFD8DC;
   }
+
+  .tri-right.left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: #CFD8DC #CFD8DC transparent transparent;
+}
 
   .talktext {
     padding: 1em;

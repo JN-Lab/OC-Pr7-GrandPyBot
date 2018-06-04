@@ -31,10 +31,16 @@ infoButtonElt.addEventListener("click", function() {
 // Message Bubble Creation
 // ----------------------------------
 
-function setUserSpeechBubble(message) {
+function setSpeechBubble(profile, message) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "speech-element talk-bubble tri-right round right-in";
-  bubbleElt.style.marginLeft = "60px";
+
+  if (profile === "user") {
+    bubbleElt.className = "speech-element talk-bubble tri-right round right-in";
+    bubbleElt.style.marginLeft = "60px";
+  } else if (profile === "app") {
+    bubbleElt.className = "speech-element talk-bubble tri-right round left-in";
+    bubbleElt.style.marginLeft = "30px";
+  }
 
   var speechBubbleElt = document.createElement("div");
   speechBubbleElt.className = "talktext";
@@ -46,20 +52,37 @@ function setUserSpeechBubble(message) {
   document.getElementById("bubble-container").appendChild(bubbleElt);
 }
 
-// To customize on CSS first, then test it, then factorize for only on function --> setSpeechBubble(profile, message)
-function setAppSpeechBubble(message) {
-  var bubbleElt = document.createElement("div");
-  bubbleElt.className = "speech-element talk-bubble tri-right round right-in";
-  bubbleElt.style.marginLeft = "60px";
+// -----------------------------------------------------
+// Manage the different response according JSON received
+// -----------------------------------------------------
 
-  var speechBubbleElt = document.createElement("div");
-  speechBubbleElt.className = "talktext";
-
-  var textElt = document.createElement("p");
-  textElt.textContent = message;
-  speechBubbleElt.appendChild(textElt);
-  bubbleElt.appendChild(speechBubbleElt);
-  document.getElementById("message-historic").appendChild(bubbleElt);
+function setResponse(response) {
+  switch (response.status) {
+  case "LOCATION_MISSING":
+    // Ask for information 
+    console.log("switch structure OK: " + response.status);
+    break;
+  case "WRONG_LOCATION":
+    // ask for specific location + preintegrate message
+    console.log("switch structure OK: " + response.status);
+    break;
+  case "COMPLETE":
+    // Ask map + print all information
+    console.log("switch structure OK:" + response.status);
+    break;
+  case "STORY_MISSING":
+    // Ask map + send only location info + message don't know this place
+    console.log("switch structure OK:" + response.status);
+    break;
+  case "GOOGLE_GEOCODING_API_PROBLEM":
+    // Message describing api problem
+    console.log("switch structure OK:" + response.status);
+    break;
+  case "WIKIMEDIA_API_PROBLEM":
+    // Message describing api problem
+    console.log("switch structure OK:" + response.status);
+    break;
+  }
 }
 
 // ----------------------------------
@@ -97,11 +120,14 @@ formElt.addEventListener("submit", function(e) {
   var data = formElt.elements.message.value
 
   if (data) {
-    setUserSpeechBubble(data);
+    setSpeechBubble("user", data);
+    setSpeechBubble("app", "I am thinking");
+
     ajaxPost("http://127.0.0.1:5000/treatment", data,
       function(response) {
         console.log(data);
         console.log(JSON.parse(response));
+        setResponse(JSON.parse(response));
       },
       true
     );

@@ -68,12 +68,6 @@ function setMapBubble(latitude, longitude) {
 // Get the Google Map with an API call
 // -----------------------------------------------------
 
-function scriptGoogleApi(apiKey) {
-  var scriptElt = document.createElement("script");
-  scriptElt.src = "https://maps.googleapis.com/maps/api/js?key=" + apiKey + "&callback=initMap";
-  document.body.appendChild(scriptElt);
-}
-
 function initMap(latitude, longitude, divId) {
   var location = {lat: latitude, lng: longitude};
   var map = new google.maps.Map(document.getElementById(divId), {
@@ -186,5 +180,4 @@ formElt.addEventListener("submit", function(e) {
 // Start initialisation
 // ----------------------------------
 
-scriptGoogleApi("YOUR_API_KEY");
 setSpeechBubble("app", "Bonjour! Cherchez-vous des informations sur un lieu?");

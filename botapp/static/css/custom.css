@@ -189,9 +189,11 @@ p {
 
 .info-element:nth-child(1) {
 }
-.info-element:nth-child(2) {}
+.info-element:nth-child(2) {
+  flex: 1;
+}
 .info-element:nth-child(3) {
-  align-self: flex-end;
+
 }
 
 #avatar-profile {
@@ -237,17 +239,37 @@ p {
   color: #F9AA33;
 }
 
+#avatar-job {
+  font-weight: bold;
+  font-size : 15px;
+}
+
 #project-description > p {
+  text-align: justify;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.card-footer {
+  border-top: solid 1px #B6B6B6;
+  padding: 5px;
+  width: 100%;
+}
+
+.card-footer ul {
+  padding: 0;
+  width: 100%;
+  margin: auto;
   text-align: center;
 }
 
-#social-link {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.card-footer ul li{
+  display: inline-block;
+  list-style: none;
+  margin: 5px;
 }
 
-.fab {
+.card-footer ul li i {
   color: #F9AA33;
 }
 

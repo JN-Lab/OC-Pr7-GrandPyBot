@@ -10,7 +10,7 @@ class GeocodingLocation:
     """
 
     def __init__(self):
-        self.api_key = Config.GEOCODING_GOOGLE_API_KEY
+        self.api_key = Config.GOOGLE_API_KEY
 
     def get_location_info(self, location):
         """

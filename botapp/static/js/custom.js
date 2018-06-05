@@ -40,6 +40,7 @@ function setSpeechBubble(profile, message) {
   } else if (profile === "app") {
     bubbleElt.className = "speech-element talk-bubble tri-right round left-in";
     bubbleElt.style.marginLeft = "30px";
+    bubbleElt.style.backgroundColor = "#A3BDED";
   }
 
   var speechBubbleElt = document.createElement("div");
@@ -52,38 +53,73 @@ function setSpeechBubble(profile, message) {
   document.getElementById("bubble-container").appendChild(bubbleElt);
 }
 
+function setMapBubble(latitude, longitude) {
+  var bubbleElt = document.createElement("div");
+  bubbleElt.className = "speech-element talk-bubble round";
+  bubbleElt.style.marginLeft = "30px";
+  bubbleElt.style.height = "250px";
+  bubbleElt.style.width = "90%";
+  bubbleElt.id = String((latitude + longitude) + Math.random());
+  document.getElementById("bubble-container").appendChild(bubbleElt);
+  initMap(latitude, longitude, bubbleElt.id);
+}
+
+// -----------------------------------------------------
+// Get the Google Map with an API call
+// -----------------------------------------------------
+
+function scriptGoogleApi(apiKey) {
+  var scriptElt = document.createElement("script");
+  scriptElt.src = "https://maps.googleapis.com/maps/api/js?key=" + apiKey + "&callback=initMap";
+  document.body.appendChild(scriptElt);
+}
+
+function initMap(latitude, longitude, divId) {
+  var location = {lat: latitude, lng: longitude};
+  var map = new google.maps.Map(document.getElementById(divId), {
+    zoom: 15,
+    center: location
+  });
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+}
+
 // -----------------------------------------------------
 // Manage the different response according JSON received
 // -----------------------------------------------------
 
-function setResponse(response, formElt) {
+function setResponse(response) {
   switch (response.status) {
   case "LOCATION_MISSING":
-    // Ask for information
     setSpeechBubble("app", "Merci pour votre message. Dîtes moi où vous souhaitez aller?");
-    formElt.elements.message.value = "Je souhaiterais aller...";
     console.log("switch structure OK: " + response.status);
     break;
   case "WRONG_LOCATION":
-    // ask for specific location + preintegrate message
     setSpeechBubble("app", "Merci pour votre message. Je ne suis pas sûr d'avoir bien compris où vous souhaitez aller. Pouvez-vous répéter s'il vous plait?");
-    formElt.elements.message.value = "Je souhaiterais aller...";
     console.log("switch structure OK: " + response.status);
     break;
   case "COMPLETE":
-    // Ask map + print all information
+    setSpeechBubble("app", "Je connais l'endroit. Voici son addresse : " + response.address);
+    setMapBubble(response.latitude, response.longitude);
+    setSpeechBubble("app", response.intro);
     console.log("switch structure OK:" + response.status);
     break;
   case "STORY_MISSING":
-    // Ask map + send only location info + message don't know this place
+    setSpeechBubble("app", "Je connais l'endroit. Voici son addresse : " + response.address);
+    setMapBubble(response.latitude, response.longitude);
+    setSpeechBubble("app", "En revanche, je n'ai pas beaucoup d'informations sur l'histoire de ce lieux. Je vais tenter d'en trouver pour la prochaine fois!");
     console.log("switch structure OK:" + response.status);
     break;
   case "GOOGLE_GEOCODING_API_PROBLEM":
-    // Message describing api problem
+    setSpeechBubble("app", "Ah! Je rencontre un problème pour récupérer les coordonnées. C'est assez rare. Cela devrait revenir très rapidement.");
     console.log("switch structure OK:" + response.status);
     break;
   case "WIKIMEDIA_API_PROBLEM":
-    // Message describing api problem
+    setSpeechBubble("app", "Je connais l'endroit. Voici son addresse : " + response.address);
+    setMapBubble(response.latitude, response.longitude);
+    setSpeechBubble("app", "En revanche, je n'ai pas beaucoup d'informations sur l'histoire de ce lieux. Je vais tenter d'en trouver pour la prochaine fois!");
     console.log("switch structure OK:" + response.status);
     break;
   }
@@ -128,9 +164,15 @@ formElt.addEventListener("submit", function(e) {
 
     ajaxPost("http://127.0.0.1:5000/treatment", data,
       function(response) {
+        response = JSON.parse(response);
         console.log(data);
-        console.log(JSON.parse(response));
-        setResponse(JSON.parse(response), formElt);
+        console.log(response);
+        setResponse(response);
+        if ((response.status === "LOCATION_MISSING") || (response.status === "WRONG_LOCATION")) {
+          formElt.elements.message.value = "Je souhaiterais aller...";
+        } else {
+          formElt.elements.message.value = "";
+        }
       },
       true
     );
@@ -139,3 +181,10 @@ formElt.addEventListener("submit", function(e) {
   }
   e.preventDefault();
 });
+
+// ----------------------------------
+// Start initialisation
+// ----------------------------------
+
+scriptGoogleApi("YOUR_API_KEY");
+setSpeechBubble("app", "Bonjour! Cherchez-vous des informations sur un lieu?");

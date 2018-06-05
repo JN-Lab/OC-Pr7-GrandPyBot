@@ -61,7 +61,7 @@
           <div id="message-input" class="chat-element">
             <form id="form-container" action="" method="" class="message-input-element">
               {{ form.hidden_tag() }}
-              {{ form.message(class="form-element", placeholder="Ecris ton message") }}
+              {{ form.message(class="form-element browser-default", id="message-field", placeholder="Ecris ton message") }}
               {{ form.submit(class="form-element", id="submit-button", value="envoyer") }}
             </form>
           </div>

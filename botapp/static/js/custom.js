@@ -35,7 +35,7 @@ function setSpeechBubble(profile, message) {
   var bubbleElt = document.createElement("div");
 
   if (profile === "user") {
-    bubbleElt.className = "speech-element talk-bubble tri-right round right-in";
+    bubbleElt.className = "speech-element talk-bubble tri-right round right-in scale-transition scale-in";
     bubbleElt.style.marginLeft = "60px";
   } else if (profile === "app") {
     bubbleElt.className = "speech-element talk-bubble tri-right round left-in";
@@ -55,14 +55,53 @@ function setSpeechBubble(profile, message) {
 
 function setMapBubble(latitude, longitude) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "speech-element talk-bubble round";
-  bubbleElt.style.marginLeft = "30px";
-  bubbleElt.style.height = "250px";
-  bubbleElt.style.width = "90%";
-  bubbleElt.id = String((latitude + longitude) + Math.random());
+  bubbleElt.className = "card blue-grey darken-1 z-depth-0";
+
+  var mapBubbleElt = document.createElement('div');
+  mapBubbleElt.className = "card-image";
+  mapBubbleElt.style.height = "250px";
+  mapBubbleElt.style.width = "100%";
+  mapBubbleElt.id = String((latitude + longitude) + Math.random());
+  bubbleElt.appendChild(mapBubbleElt);
+
+  var linkBubbleElt = document.createElement("div");
+  linkBubbleElt.className = "card-action";
+  var urlLinkBubbleElt = document.createElement("a");
+  urlLinkBubbleElt.textContent = "ITINERAIRE";
+  urlLinkBubbleElt.href = "#";
+  linkBubbleElt.appendChild(urlLinkBubbleElt);
+  bubbleElt.appendChild(linkBubbleElt);
+
   document.getElementById("bubble-container").appendChild(bubbleElt);
-  initMap(latitude, longitude, bubbleElt.id);
+  initMap(latitude, longitude, mapBubbleElt.id);
 }
+
+function setStoryBubble(title, text, link) {
+  var bubbleElt = document.createElement("div");
+  bubbleElt.className = "card blue-grey darken-1 z-depth-0";
+
+  var contentBubbleElt = document.createElement("div");
+  contentBubbleElt.className = "card-content white-text";
+  var titleBubbleElt = document.createElement("span");
+  titleBubbleElt.className = "card-title";
+  titleBubbleElt.textContent = title;
+  var textBubbleElt = document.createElement("p");
+  textBubbleElt.textContent = text;
+  contentBubbleElt.appendChild(titleBubbleElt);
+  contentBubbleElt.appendChild(textBubbleElt);
+  bubbleElt.appendChild(contentBubbleElt);
+
+  var linkBubbleElt = document.createElement("div");
+  linkBubbleElt.className = "card-action";
+  var urlBubbleElt = document.createElement("a");
+  urlBubbleElt.textContent = "PLUS D'INFOS";
+  urlBubbleElt.href = link;
+  linkBubbleElt.appendChild(urlBubbleElt);
+  bubbleElt.appendChild(linkBubbleElt);
+
+  document.getElementById("bubble-container").appendChild(bubbleElt);
+}
+
 
 // -----------------------------------------------------
 // Get the Google Map with an API call
@@ -97,7 +136,8 @@ function setResponse(response) {
   case "COMPLETE":
     setSpeechBubble("app", "Je connais l'endroit. Voici son addresse : " + response.address);
     setMapBubble(response.latitude, response.longitude);
-    setSpeechBubble("app", response.intro);
+    setSpeechBubble("app", "Voici également ce que j'ai trouvé comme élément sur ce lieux");
+    setStoryBubble(response.title, response.intro, response.page_link);
     console.log("switch structure OK:" + response.status);
     break;
   case "STORY_MISSING":

@@ -59,7 +59,7 @@ function setMapBubble(latitude, longitude, address) {
 
   var mapBubbleElt = document.createElement('div');
   mapBubbleElt.className = "card-image";
-  mapBubbleElt.style.height = "250px";
+  mapBubbleElt.style.height = "300px";
   mapBubbleElt.style.width = "100%";
   mapBubbleElt.id = String((latitude + longitude) + Math.random());
   bubbleElt.appendChild(mapBubbleElt);
@@ -107,21 +107,19 @@ function setStoryBubble(title, text, link) {
 function setLoaderBubble() {
   var preloaderElt = document.createElement("div");
   preloaderElt.id = "loader";
-  preloaderElt.className = "speech-element preloader-wrapper active";
+  preloaderElt.className = "loader-position speech-element preloader-wrapper active";
   preloaderElt.style.marginRight = "60px";
   var spinnerElt = document.createElement("div");
   spinnerElt.className = "spinner-layer spinner-blue-only";
 
   var clipperElt = document.createElement("div");
   clipperElt.className = "circle-clipper left";
-  clipperElt.style.transform = "rotate(180deg)";
   var circleClipperElt = document.createElement("div");
   circleClipperElt.className = "circle";
   clipperElt.appendChild(circleClipperElt);
 
   var gapElt = document.createElement("div");
   gapElt.className = "gap-patch";
-  gapElt.style.transform = "rotate(180deg)";
   var circleGapElt = document.createElement("div");
   circleGapElt.className = "circle";
   gapElt.appendChild(circleGapElt);
@@ -148,7 +146,8 @@ function initMap(latitude, longitude, divId) {
   var location = {lat: latitude, lng: longitude};
   var map = new google.maps.Map(document.getElementById(divId), {
     zoom: 15,
-    center: location
+    center: location,
+    gestureHandling: "cooperative"
   });
   var marker = new google.maps.Marker({
     position: location,
@@ -209,9 +208,9 @@ function waitingMessage() {
   var count = 0;
   if (count < 3) {
     loaderElt.textContent += ".";
+    count += 1;
     console.log(loaderElt.textContent);
     console.log(count);
-    count += 1;
   } else {
     loaderElt.textContent = "";
   }
@@ -271,7 +270,6 @@ formElt.addEventListener("submit", function(e) {
     ajaxPost("http://127.0.0.1:5000/treatment", data,
       function(response) {
         response = JSON.parse(response);
-        console.log(data);
         console.log(response);
         setResponse(response);
         if ((response.status === "LOCATION_MISSING") || (response.status === "WRONG_LOCATION")) {

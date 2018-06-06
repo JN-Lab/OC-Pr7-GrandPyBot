@@ -364,6 +364,7 @@ p {
 }
 
 .message-status-element{
+  display: none;
 
 }
 

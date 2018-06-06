@@ -53,7 +53,7 @@ function setSpeechBubble(profile, message) {
   document.getElementById("bubble-container").appendChild(bubbleElt);
 }
 
-function setMapBubble(latitude, longitude) {
+function setMapBubble(latitude, longitude, address) {
   var bubbleElt = document.createElement("div");
   bubbleElt.className = "card blue-grey darken-1 z-depth-0";
 
@@ -66,10 +66,11 @@ function setMapBubble(latitude, longitude) {
 
   var linkBubbleElt = document.createElement("div");
   linkBubbleElt.className = "card-action";
-  var urlLinkBubbleElt = document.createElement("a");
-  urlLinkBubbleElt.textContent = "ITINERAIRE";
-  urlLinkBubbleElt.href = "#";
-  linkBubbleElt.appendChild(urlLinkBubbleElt);
+  var urlBubbleElt = document.createElement("a");
+  urlBubbleElt.textContent = "ITINERAIRE";
+  urlBubbleElt.href = "https://www.google.com/maps/dir/?api=1&destination=" + address.replace(/\s+/g, "+");
+  urlBubbleElt.target = "_blank";
+  linkBubbleElt.appendChild(urlBubbleElt);
   bubbleElt.appendChild(linkBubbleElt);
 
   document.getElementById("bubble-container").appendChild(bubbleElt);
@@ -96,6 +97,7 @@ function setStoryBubble(title, text, link) {
   var urlBubbleElt = document.createElement("a");
   urlBubbleElt.textContent = "PLUS D'INFOS";
   urlBubbleElt.href = link;
+  urlBubbleElt.target = "_blank";
   linkBubbleElt.appendChild(urlBubbleElt);
   bubbleElt.appendChild(linkBubbleElt);
 
@@ -135,14 +137,14 @@ function setResponse(response) {
     break;
   case "COMPLETE":
     setSpeechBubble("app", "Je connais l'endroit. Voici son addresse : " + response.address);
-    setMapBubble(response.latitude, response.longitude);
+    setMapBubble(response.latitude, response.longitude, response.address);
     setSpeechBubble("app", "Voici également ce que j'ai trouvé comme élément sur ce lieux");
     setStoryBubble(response.title, response.intro, response.page_link);
     console.log("switch structure OK:" + response.status);
     break;
   case "STORY_MISSING":
     setSpeechBubble("app", "Je connais l'endroit. Voici son addresse : " + response.address);
-    setMapBubble(response.latitude, response.longitude);
+    setMapBubble(response.latitude, response.longitude, response.address);
     setSpeechBubble("app", "En revanche, je n'ai pas beaucoup d'informations sur l'histoire de ce lieux. Je vais tenter d'en trouver pour la prochaine fois!");
     console.log("switch structure OK:" + response.status);
     break;
@@ -152,10 +154,31 @@ function setResponse(response) {
     break;
   case "WIKIMEDIA_API_PROBLEM":
     setSpeechBubble("app", "Je connais l'endroit. Voici son addresse : " + response.address);
-    setMapBubble(response.latitude, response.longitude);
+    setMapBubble(response.latitude, response.longitude, response.address);
     setSpeechBubble("app", "En revanche, je n'ai pas beaucoup d'informations sur l'histoire de ce lieux. Je vais tenter d'en trouver pour la prochaine fois!");
     console.log("switch structure OK:" + response.status);
     break;
+  }
+}
+
+// ----------------------------------
+// Waiting loader
+// ----------------------------------
+
+function waitingMessage() {
+  var messageElt = document.getElementById("status-text");
+  var loaderElt = document.getElementById('status-loading');
+  messageElt.textContent = "laissez-moi réfléchir"
+  messageElt.style.display = "inline";
+  loaderElt.style.display = "inline";
+  var count = 0;
+  if (count < 3) {
+    loaderElt.textContent += ".";
+    console.log(loaderElt.textContent);
+    console.log(count);
+    count += 1;
+  } else {
+    loaderElt.textContent = "";
   }
 }
 
@@ -167,6 +190,16 @@ function setResponse(response) {
 function ajaxPost(url, data, callback, isJson) {
     var req = new XMLHttpRequest();
     req.open("POST", url);
+
+    req.addEventListener("loadstart", function () {
+      var IntervalId = setInterval(waitingMessage(), 10);
+    })
+    req.addEventListener("loadend", function () {
+      var messageElt = document.getElementById("status-text");
+      var loaderElt = document.getElementById('status-loading');
+      messageElt.style.display = "none";
+      loaderElt.style.display = "none";
+    })
     req.addEventListener("load", function () {
         if (req.status >= 200 && req.status < 400) {
             // Appelle la fonction callback en lui passant la réponse de la requête

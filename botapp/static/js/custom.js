@@ -104,6 +104,41 @@ function setStoryBubble(title, text, link) {
   document.getElementById("bubble-container").appendChild(bubbleElt);
 }
 
+function setLoaderBubble() {
+  var preloaderElt = document.createElement("div");
+  preloaderElt.id = "loader";
+  preloaderElt.className = "speech-element preloader-wrapper active";
+  preloaderElt.style.marginRight = "60px";
+  var spinnerElt = document.createElement("div");
+  spinnerElt.className = "spinner-layer spinner-blue-only";
+
+  var clipperElt = document.createElement("div");
+  clipperElt.className = "circle-clipper left";
+  clipperElt.style.transform = "rotate(180deg)";
+  var circleClipperElt = document.createElement("div");
+  circleClipperElt.className = "circle";
+  clipperElt.appendChild(circleClipperElt);
+
+  var gapElt = document.createElement("div");
+  gapElt.className = "gap-patch";
+  gapElt.style.transform = "rotate(180deg)";
+  var circleGapElt = document.createElement("div");
+  circleGapElt.className = "circle";
+  gapElt.appendChild(circleGapElt);
+
+  var rightElt = document.createElement("div");
+  rightElt.className = "circle-clipper right";
+  var circleRightElt = document.createElement("div");
+  circleRightElt.className = "circle";
+  rightElt.appendChild(circleRightElt);
+
+  spinnerElt.appendChild(clipperElt);
+  spinnerElt.appendChild(gapElt);
+  spinnerElt.appendChild(rightElt);
+
+  preloaderElt.appendChild(spinnerElt);
+  document.getElementById("bubble-container").appendChild(preloaderElt);
+}
 
 // -----------------------------------------------------
 // Get the Google Map with an API call
@@ -193,12 +228,16 @@ function ajaxPost(url, data, callback, isJson) {
 
     req.addEventListener("loadstart", function () {
       var IntervalId = setInterval(waitingMessage(), 10);
+      setLoaderBubble();
     })
     req.addEventListener("loadend", function () {
       var messageElt = document.getElementById("status-text");
       var loaderElt = document.getElementById('status-loading');
       messageElt.style.display = "none";
       loaderElt.style.display = "none";
+
+      var loaderElt = document.getElementById("loader");
+      loaderElt.remove();
     })
     req.addEventListener("load", function () {
         if (req.status >= 200 && req.status < 400) {

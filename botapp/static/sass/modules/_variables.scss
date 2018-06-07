@@ -1,0 +1,19 @@
+// Font
+$font-stack: 'Roboto', sans-serif;
+
+// All the colors from the website
+$white: #FFFFFF;
+$blue: #344955;
+$blue-light: #A3BDED;
+$blue-dark: #232F34;
+$online-green: #2E7D32;
+$grey: #CFD8DC;
+$yellow: #F9AA33;
+
+// Breakpoints Screen
+$breakpoints: (
+    'small': (min-width: 600px),
+    'medium': (min-width: 800px),
+    'large': (min-width: 1000px),
+    'huge': (min-width: 1200px),
+);

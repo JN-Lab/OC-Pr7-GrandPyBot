@@ -2,4 +2,5 @@ env/
 config.py
 __pycache__/
 .pytest_cache
+.sass-cache
 botapp/__pycache__/

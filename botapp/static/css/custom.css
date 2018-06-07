@@ -50,7 +50,7 @@ p {
   margin-right: 50px;
 }
 
-#main-container { /* Only child from global-container */
+#main-container {
   display : flex;
   flex-direction: row;
   width: 100%;

@@ -12,7 +12,8 @@
     align-items: center;
   
     height: 100%;
-    width: 100%;   
+    width: 100%;
+
 }
 
 .global-element:nth-child(1) {
@@ -29,6 +30,12 @@
 * Grid of the Marketing Container --> Tagline
 */
 
+#tagline-container {
+    @include respond-to('large') {
+        display: none;
+    }
+}
+
 /**
 * Grid of the main container --> Main elements of the app
 */
@@ -40,6 +47,14 @@
     height : 80%;
     max-width: 600px;
     max-height: 800px;
+
+    @include respond-to('large') {
+        margin-right: 0px;
+    }
+
+    @include respond-to('small') {
+        min-height: 100%;
+    }
 }
 
 .main-element:nth-child(1) {
@@ -56,7 +71,7 @@
     flex-direction: column;
 }
 
-.message-element:nth-chil(3) {
+.message-element:nth-child(3) {
     flex: 1;
 }
 

@@ -12,7 +12,7 @@
             inspect($raw-query)
         );
 
-        @media #{query} {
+        @media #{$query} {
             @content;
         }
     } @else {

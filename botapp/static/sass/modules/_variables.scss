@@ -12,8 +12,8 @@ $yellow: #F9AA33;
 
 // Breakpoints Screen
 $breakpoints: (
-    'small': (min-width: 600px),
-    'medium': (min-width: 800px),
-    'large': (min-width: 1000px),
-    'huge': (min-width: 1200px),
+    'small': screen and (max-width: 600px),
+    'medium': screen and (max-width: 800px),
+    'large': screen and (max-width: 1000px),
+    'huge': screen and (max-width: 1200px),
 );

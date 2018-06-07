@@ -7,118 +7,20 @@
 
 /* Global confguration */
 
-html, body {
-  background-image: linear-gradient(to right bottom, #a3bded, #95b2e3, #86a7da, #789cd0, #6991c7);
-  font-family: 'Roboto', sans-serif;
-  height: 100%;
-  width: 100%;
-  margin: 0px;
-  overflow: hidden;
-}
-
-h1 {
-  color: #F7F7FF;
-}
-
-p {
-    display: block;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 0;
-    margin-right: 0;
-    line-height: 140%;
-}
-
-#global-container {
-
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  height: 100%;
-  width: 100%;
-}
-
-.global-element:nth-child(1) {
-  flex: 4;
-  margin-left: 50px;
-}
-
-.global-element:nth-child(2) {
-  flex: 3;
-  margin-right: 50px;
-}
-
 #main-container {
-  display : flex;
-  flex-direction: row;
-  width: 100%;
-  height : 80%;
-  max-width: 600px;
-  max-height: 800px;
-
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
-}
-
-.main-element:nth-child(0){
-  flex: 1;
-}
-
-@media screen and (max-width: 1024px) {
-  #global-container {
-  }
-
-  #tagline-container {
-    display: none;
-  }
-
-  #main-container {
-    margin-right: 0px;
-  }
-
-}
-
-@media screen and (max-width: 600px) {
-
-  #main-container {
-    min-height: 100%;
-  }
-
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 /* From Main Content : Message Content Configuration */
 #message-container {
-  flex: 1;
   background-color: #FFFFFF;
-  display: flex;
-  flex-direction: column;
-}
-
-.message-element:nth-child(1) {
-
-}
-
-.message-element:nth-child(2) {
-}
-
-.message-element:nth-child(3) {
-  flex: 1;
 }
 
 /* From Message Content Configuration: Title configuration */
 
 #message-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-
   background-color: #344955;
   color: #FFFFFF;
-  height: 50px;
-
 }
 
 #online-circle {
@@ -133,17 +35,12 @@ p {
 /* From Message Content Configuration: Avatar configuration */
 
 #message-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   background-color: #CFD8DC;
-  height: 50px;
   border-bottom: 1px solid #ccc;
 }
 
 .message-nav-element {
   background: none;
-  flex: auto;
   border: none;
   font-weight: bold;
   color: #232F34;
@@ -166,48 +63,10 @@ p {
 /* From Message Content Configuration: Historic configuration */
 
 #message-content {
-  display: flex;
-  flex-direction: column;
   background-color: #FFFFFF;
-  overflow: hidden;
-
-}
-
-.content-element:nth-child(1) {
-  flex: 1;
-}
-
-.content-element:nth-child(2) {
-  flex: 1;
 }
 
 /* From Message Content : Info Configuration */
-
-#info-container {
-  display: none; /* None by default */
-  flex-direction: column;
-}
-
-.info-element:nth-child(1) {
-}
-.info-element:nth-child(2) {
-  flex: 1;
-}
-.info-element:nth-child(3) {
-
-}
-
-#avatar-profile {
-  display: flex;
-  flex-direction: row;
-}
-
-.avatar-element:nth-child(1) {
-  flex: 2;
-}
-.avatar-element:nth-child(2) {
-  flex: 3;
-}
 
 #avatar-image {
   padding: 20px;
@@ -221,9 +80,6 @@ p {
 }
 
 #avatar-description {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   color: #232F34;
 
   padding-left: 5px;
@@ -275,30 +131,6 @@ p {
 }
 
 /* From Message Content : Chat Configuration */
-
-#chat-container {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.chat-element:nth-child(1) {
-  overflow: scroll;
-  transform: rotate(180deg);
-  flex:1;
-}
-.chat-element:nth-child(2) {}
-
-#bubble-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  transform: rotate(-180deg);
-}
-
-.speech-element {
-
-}
 
 /* From Message Content : Speech Bubble Configuration */
 
@@ -357,43 +189,18 @@ p {
 /* From Chat Content Configuration: Status configuration */
 
 #message-status {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  background-color: #CFD8DC;
-}
-
-.message-status-element{
-  display: none;
-
+background-color: #CFD8DC;
 }
 
 /* From Chat Content Configuration: Form configuration */
 
 #message-input {
   background-color: #FFFFFF;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  height: 50px;
   padding-left: 5px;
   border-top: 2px solid #CFD8DC;
 }
 
-.message-input-element:nth-child(1) {
-  flex: 1;
-}
-
-.message-input-element:nth-child(2) {
-}
-
-#form-container {
-  display: flex;
-  flex-direction: row;
-}
-
 .form-element:nth-child(2) {
-  flex: 1;
   border: none;
 }
 .form-element:nth-child(3) {
@@ -416,12 +223,6 @@ p {
 }
 
 /* Footer Configuration */
-footer {
-  background-color: #495867;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .loader-position {
   margin: 30px;

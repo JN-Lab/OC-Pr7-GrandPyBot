@@ -5,20 +5,19 @@
     <p>GrandPy Bot</p>
     <p>Demande-lui le lieu où tu souhaites te rendre <br> Et il te donnera toutes les informations nécessaires</p>
   </div>
-  <div id="main-container" class="global-element">
+  <div id="main-container" class="global-element card-custom">
 
     {# Message Card #}
     <div id="message-container" class="main-element">
       {# Title of message card #}
-      <div id="message-title" class="message-element">
-        <div id="online-circle" class="message-title-element"></div>
-        <div class="message-title-element">GrandPy</div>
+      <div id="message-title" class="message-element main-title">
+        <div class="message-title-element title">GrandPy Bot</div>
       </div>
 
       {# Menu in order to print app information or chat with grandpy into message historic part #}
-      <nav id="message-nav" class="message-element">
-        <button id="chat-button" class="message-nav-element">CHAT</button>
-        <button id="info-button" class="message-nav-element">INFOS</button>
+      <nav id="message-nav" class="message-element nav-message">
+        <button id="chat-button" class="message-nav-element nav-selected">CHAT</button>
+        <button id="info-button" class="message-nav-element nav-unselected">INFOS</button>
       </nav>
 
       {# Where Messages and informations are done #}

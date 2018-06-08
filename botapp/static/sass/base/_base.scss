@@ -42,3 +42,8 @@ p {
     margin-right: 0;
     line-height: 140%;
 }
+
+.card-custom {
+    box-shadow: $card-shadow;
+    background-color: $white;
+}

@@ -1,0 +1,103 @@
+// All the custom css for chat container
+
+/* From Message Content : Speech Bubble Configuration */
+
+.talk-bubble {
+    margin: 30px;
+    display: inline-block;
+    position: relative;
+  	width: auto;
+  	height: auto;
+  	background-color: #CFD8DC;
+  }
+
+  .round {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+  }
+
+  .tri-right.right-in:after{
+  	content: ' ';
+  	position: absolute;
+  	width: 0;
+  	height: 0;
+    left: auto;
+  	right: -20px;
+    top: 38px;
+  	bottom: auto;
+  	border: 12px solid;
+  	border-color: #CFD8DC transparent transparent #CFD8DC;
+  }
+
+  .tri-right.left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: #A3BDED #A3BDED transparent transparent;
+}
+
+  .talktext {
+    padding: 1em;
+    text-align: left;
+    line-height: 1em;
+  }
+  .talktext p{
+  /* remove webkit p margins */
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+  }
+
+/* From Chat Content Configuration: Status configuration */
+
+#message-status {
+background-color: #CFD8DC;
+}
+
+/* From Chat Content Configuration: Form configuration */
+
+#message-input {
+  background-color: #FFFFFF;
+  padding-left: 5px;
+  border-top: 2px solid #CFD8DC;
+}
+
+.form-element:nth-child(2) {
+  border: none;
+}
+.form-element:nth-child(3) {
+  border: none;
+  color: #F9AA33;
+  font-weight: bold;
+  background: none;
+}
+
+#message-field {
+}
+
+#submit-button {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#submit-button:hover {
+  cursor: pointer;
+}
+
+/* Footer Configuration */
+
+.loader-position {
+  margin: 30px;
+}
+
+.z-depth-0 {
+  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
+}

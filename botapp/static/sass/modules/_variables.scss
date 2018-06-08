@@ -8,6 +8,7 @@ $blue-light: #A3BDED;
 $blue-dark: #232F34;
 $online-green: #2E7D32;
 $grey: #CFD8DC;
+$classic-grey: #ccc;
 $yellow: #F9AA33;
 
 // Breakpoints Screen
@@ -17,3 +18,6 @@ $breakpoints: (
     'large': screen and (max-width: 1000px),
     'huge': screen and (max-width: 1200px),
 );
+
+
+$card-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);

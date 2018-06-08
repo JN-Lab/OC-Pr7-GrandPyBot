@@ -20,3 +20,10 @@
             + 'Please make sure it is defined in `$breakpoints` map.';
     }
 }
+
+@mixin circle($diameter, $color) {
+    height: $diameter;
+    width: $diameter;
+    border-radius: $diameter / 2;
+    background: $color;
+}

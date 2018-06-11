@@ -19,6 +19,7 @@ def index():
 
 @app.route('/treatment', methods=['POST'])
 def message_back():
+    """Realize all the necessary treatments on the message and send back a json response"""
     message_entrant = {}
     if request.is_json:
         message_entrant = request.get_json()

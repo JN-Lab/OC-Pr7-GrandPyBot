@@ -3,7 +3,7 @@
 import unicodedata
 import re
 from string import punctuation
-from .stop_words import common_words, welcome_words
+from botapp.utils.stop_words import common_words, welcome_words
 
 class MessageParser:
     """
@@ -11,7 +11,7 @@ class MessageParser:
     It is used to identify the location the user is looking for from his message.
     """
 
-    def remove_punctuation(self, message):
+    def _remove_punctuation(self, message):
         """This method removes the punctuation from a message"""
         final_message = []
         for letter in message:
@@ -26,7 +26,7 @@ class MessageParser:
 
         return final_message
 
-    def remove_stop_words(self, message):
+    def _remove_stop_words(self, message):
         """
         This method removes words from a message
         according free useless stop words list
@@ -39,7 +39,7 @@ class MessageParser:
         final_message = ' '.join(final_message)
         return final_message
 
-    def remove_accents(self, message):
+    def _remove_accents(self, message):
         """This method removes the accent from a message"""
         try:
             message = unicode(message, 'utf-8')
@@ -50,7 +50,7 @@ class MessageParser:
         message = message.decode('utf-8')
         return str(message)
 
-    def remove_useless_words(self, message):
+    def _remove_useless_words(self, message):
         """
         This method removes all the useless words from a message
         It includes different methods from MessageParser class.
@@ -59,9 +59,9 @@ class MessageParser:
         Finally, it removes all the welcome words.
         """
         message.lower()
-        message = self.remove_punctuation(message)
-        message = self.remove_accents(message)
-        message = self.remove_stop_words(message)
+        message = self._remove_punctuation(message)
+        message = self._remove_accents(message)
+        message = self._remove_stop_words(message)
         split_message = message.split()
         final_message = []
         for word in split_message:
@@ -71,7 +71,7 @@ class MessageParser:
         final_message =' '.join(final_message)
         return final_message
 
-    def split_by_keywords(self, message):
+    def _split_by_keywords(self, message):
         """
         This method cleans a message asking a location by targeting specific
         keywords linked to this kind of message and remove all the previous words
@@ -92,7 +92,7 @@ class MessageParser:
         This is the global method integrating all the treatment methods from
         this class. It is the public method that will be used in the programm.
         """
-        message = self.split_by_keywords(message)
-        message = self.remove_useless_words(message)
+        message = self._split_by_keywords(message)
+        message = self._remove_useless_words(message)
 
         return message

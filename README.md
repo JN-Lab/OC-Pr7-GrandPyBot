@@ -76,7 +76,9 @@ Here is a typical interaction with the application:
 ```
 git clone https://github.com/JN-Lab/OC-Pr7-GrandPyBot.git
 ```
+
 When your are in your directory (root):
+
 2. Set-up your virtual environnement:
 ```
 python3 -m venv env

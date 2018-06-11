@@ -23,52 +23,56 @@ Here is a typical interaction with the application:
 
 ## App Structure
 
+│   └── metadata.yaml  # Define navigation for French documentation
+└── metadata.yaml 
+
+```bash
 |-- .gitignore
 |-- .README.md
 |-- config.py.dist
 |-- requirements.txt
 |-- run.py
-|-- botapp
+|-- botapp/
     |-- __init__.py
     |-- app.py
     |-- forms.py
     |-- views.py
-    |-- static
-        |-- css
+    |-- static/
+        |-- css/
             |-- main.css
             |-- main.css.map
-        |-- sass
+        |-- sass/
             |-- main.scss
-            |-- base
+            |-- base/
                 |-- _base.scss
-            |-- layout
+            |-- layout/
                 |-- _chat.scss
                 |-- _grid.scss
                 |-- _header.scss
                 |-- _info.scss
-            |-- modules
+            |-- modules/
                 |-- _mixins.scss
                 |-- _variables.scss
-        |-- js
+        |-- js/
             |-- custom.js
-        |-- img
+        |-- img/
             |-- avatar.png
-    |-- templates
+    |-- templates/
         |-- base.html
         |-- index.html
-    |-- utils
+    |-- utils/
         |-- geocoding.py
         |-- mediawiki.py
         |-- message_parse.py
         |-- response.py
         |-- stop_words.py
-|-- tests
-    |-- utils
+|-- tests/
+    |-- utils/
         |-- test_geocoding.py
         |-- test_mediawiki.py
         |-- test_message_parse.py
         |-- test_response.py
-
+```
 
 ## Getting Started
 1. Clone the repository:

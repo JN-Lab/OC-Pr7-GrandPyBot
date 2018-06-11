@@ -51,17 +51,17 @@ function setSpeechBubble(profile, message) {
 
 function setMapBubble(latitude, longitude, address) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "card blue-grey darken-1 z-depth-0";
+  bubbleElt.className = "mdl-card";
 
   var mapBubbleElt = document.createElement('div');
-  mapBubbleElt.className = "card-image";
+  mapBubbleElt.className = "mdl-card__media";
   mapBubbleElt.style.height = "300px";
-  mapBubbleElt.style.width = "100%";
+  // mapBubbleElt.style.width = "100%";
   mapBubbleElt.id = String((latitude + longitude) + Math.random());
   bubbleElt.appendChild(mapBubbleElt);
 
   var linkBubbleElt = document.createElement("div");
-  linkBubbleElt.className = "card-action";
+  linkBubbleElt.className = "mdl-card__action";
   var urlBubbleElt = document.createElement("a");
   urlBubbleElt.textContent = "ITINERAIRE";
   urlBubbleElt.href = "https://www.google.com/maps/dir/?api=1&destination=" + address.replace(/\s+/g, "+");
@@ -75,12 +75,12 @@ function setMapBubble(latitude, longitude, address) {
 
 function setStoryBubble(title, text, link) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "card blue-grey darken-1 z-depth-0";
+  bubbleElt.className = "mdl-card";
 
   var contentBubbleElt = document.createElement("div");
-  contentBubbleElt.className = "card-content white-text";
+  contentBubbleElt.className = "mdl-card__supporting-text";
   var titleBubbleElt = document.createElement("span");
-  titleBubbleElt.className = "card-title";
+  titleBubbleElt.className = "mdl-card__title";
   titleBubbleElt.textContent = title;
   var textBubbleElt = document.createElement("p");
   textBubbleElt.textContent = text;
@@ -89,7 +89,7 @@ function setStoryBubble(title, text, link) {
   bubbleElt.appendChild(contentBubbleElt);
 
   var linkBubbleElt = document.createElement("div");
-  linkBubbleElt.className = "card-action";
+  linkBubbleElt.className = "mdl-card__action";
   var urlBubbleElt = document.createElement("a");
   urlBubbleElt.textContent = "PLUS D'INFOS";
   urlBubbleElt.href = link;

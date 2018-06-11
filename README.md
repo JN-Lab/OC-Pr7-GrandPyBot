@@ -25,7 +25,7 @@ Here is a typical interaction with the application:
 
 ```
 |-- .gitignore
-|-- .README.md
+|-- README.md
 |-- config.py.dist
 |-- requirements.txt
 |-- run.py

@@ -23,10 +23,7 @@ Here is a typical interaction with the application:
 
 ## App Structure
 
-│   └── metadata.yaml  # Define navigation for French documentation
-└── metadata.yaml 
-
-```bash
+```
 |-- .gitignore
 |-- .README.md
 |-- config.py.dist

@@ -6,7 +6,7 @@ This is a web application to help user to find an address and learn more about t
 
 ### Functionalities
 * AJAX interactions : the user send his question by pressing enter key and the answer is directly printed on the screen, without reloading the webpage.
-* Use of GoogleMap API and Media Wiki API.
+* Use of Google Geocoding API, Google Map API and Media Wiki API.
 * Nothing is saved. If the user reloads the webpage, all the history is lost.
 
 ### User Path
@@ -21,18 +21,93 @@ Here is a typical interaction with the application:
 * The answer is appears: "Of course! Here is it: 7 cité Paradis, 75010 Paris." Below, there is a Google map with a flag showing the location.
 * GrandPy sends a new message: "Did I told you the story of this area? The cité Paradis is a public street located in the XXe arrondissement of Paris. It looks like a T (the letter).
 
+## App Structure
+
+|-- .gitignore
+|-- .README.md
+|-- config.py.dist
+|-- requirements.txt
+|-- run.py
+|-- botapp
+    |-- __init__.py
+    |-- app.py
+    |-- forms.py
+    |-- views.py
+    |-- static
+        |-- css
+            |-- main.css
+            |-- main.css.map
+        |-- sass
+            |-- main.scss
+            |-- base
+                |-- _base.scss
+            |-- layout
+                |-- _chat.scss
+                |-- _grid.scss
+                |-- _header.scss
+                |-- _info.scss
+            |-- modules
+                |-- _mixins.scss
+                |-- _variables.scss
+        |-- js
+            |-- custom.js
+        |-- img
+            |-- avatar.png
+    |-- templates
+        |-- base.html
+        |-- index.html
+    |-- utils
+        |-- geocoding.py
+        |-- mediawiki.py
+        |-- message_parse.py
+        |-- response.py
+        |-- stop_words.py
+|-- tests
+    |-- utils
+        |-- test_geocoding.py
+        |-- test_mediawiki.py
+        |-- test_message_parse.py
+        |-- test_response.py
+
+
 ## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+1. Clone the repository:
+```
+git clone https://github.com/JN-Lab/OC-Pr7-GrandPyBot.git
+```
+When your are in your directory (root):
+2. Set-up your virtual environnement:
+```
+python3 -m venv env
+```
 
-### Prerequisites
-(To build)
+3. Activate your virtuel environment:
+```
+source env/bin/activate
+```
 
-### Installing
-(To build)
+4. Install all necessary frameworks and libraries:
+```
+pip install -r requirements.txt
+```
 
-### Running the tests
-(To build)
+5. Initiate FLASK_APP, your local session variable:
+```
+export FLASK_APP=run.py
+```
 
-## Built with
-* Flask
-* Bootstrap
+6. Run flask in local:
+```
+flask run
+```
+
+7. You go on your favorite browser and copy-paste this url:
+```
+http://127.0.0.1:5000/
+```
+
+## Running the tests
+To run the unit tests and get all the informations (in the root directory):
+```
+python3 -m pytest -v
+```

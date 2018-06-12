@@ -44,14 +44,20 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 .mdl-card {
     width: 100%;
     background-color: $white;
     max-width: 800px;
+    margin-bottom: 5px;
 
     @include respond-to('medium') {
         @include shadow-2dp();
     }
+}
+
+.mdl-card__actions > a {
+    text-decoration: none;
 }

@@ -1,28 +1,3 @@
-// -------------------------------
-// Nav Management Interactions
-// -------------------------------
-
-var infoButtonElt = document.getElementById("info-button");
-var chatButtonElt = document.getElementById("chat-button");
-var infoContainerElt = document.getElementById("info-container");
-var chatContainerElt = document.getElementById("chat-container");
-
-// Click on Chat Button
-chatButtonElt.addEventListener("click", function() {
-  chatButtonElt.className = "message-nav-element nav-selected";
-  infoButtonElt.className = "message-nav-element nav-unselected";
-  chatContainerElt.style.display = "flex";
-  infoContainerElt.style.display = "none";
-});
-
-// Click on Info Button
-infoButtonElt.addEventListener("click", function() {
-  chatButtonElt.className = "message-nav-element nav-unselected";
-  infoButtonElt.className = "message-nav-element nav-selected";
-  infoContainerElt.style.display = "flex";
-  chatContainerElt.style.display = "none";
-});
-
 // ----------------------------------
 // Message Bubble Creation
 // ----------------------------------
@@ -49,9 +24,20 @@ function setSpeechBubble(profile, message) {
   document.getElementById("bubble-container").appendChild(bubbleElt);
 }
 
+function setSpeechBubbleNew(profile, message) {
+  var bubbleElt = document.createElement("div");
+  bubbleEll.className = "mdl-card bubble-card";
+
+  var contentBubbleElt = document.createElement("div");
+  contentBubbleElt.className = "mdl-card__supporting-text";
+  contentBubbleElt.textContent = message;
+  bubbleElt.appendChild(contentBubbleElt);
+  document.getElementById("bubble-container").appendChild(bubbleElt);
+}
+
 function setMapBubble(latitude, longitude, address) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "mdl-card";
+  bubbleElt.className = "mdl-card bubble-card";
 
   var mapBubbleElt = document.createElement('div');
   mapBubbleElt.className = "mdl-card__media";
@@ -61,8 +47,9 @@ function setMapBubble(latitude, longitude, address) {
   bubbleElt.appendChild(mapBubbleElt);
 
   var linkBubbleElt = document.createElement("div");
-  linkBubbleElt.className = "mdl-card__action";
+  linkBubbleElt.className = "mdl-card__actions mdl-card--border";
   var urlBubbleElt = document.createElement("a");
+  urlBubbleElt.className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent";
   urlBubbleElt.textContent = "ITINERAIRE";
   urlBubbleElt.href = "https://www.google.com/maps/dir/?api=1&destination=" + address.replace(/\s+/g, "+");
   urlBubbleElt.target = "_blank";
@@ -75,22 +62,25 @@ function setMapBubble(latitude, longitude, address) {
 
 function setStoryBubble(title, text, link) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "mdl-card";
+  bubbleElt.className = "mdl-card bubble-card";
+
+  var titleBubbleElt = document.createElement("div");
+  titleBubbleElt.className = "mdl-card__title";
+  var titleTextElt = document.createElement("h2");
+  titleTextElt.className = "mdl-card__title-text";
+  titleTextElt.textContent = title;
+  titleBubbleElt.appendChild(titleTextElt);
+  bubbleElt.appendChild(titleBubbleElt);
 
   var contentBubbleElt = document.createElement("div");
   contentBubbleElt.className = "mdl-card__supporting-text";
-  var titleBubbleElt = document.createElement("span");
-  titleBubbleElt.className = "mdl-card__title";
-  titleBubbleElt.textContent = title;
-  var textBubbleElt = document.createElement("p");
-  textBubbleElt.textContent = text;
-  contentBubbleElt.appendChild(titleBubbleElt);
-  contentBubbleElt.appendChild(textBubbleElt);
+  contentBubbleElt.textContent = text;
   bubbleElt.appendChild(contentBubbleElt);
 
   var linkBubbleElt = document.createElement("div");
-  linkBubbleElt.className = "mdl-card__action";
+  linkBubbleElt.className = "mdl-card__actions mdl-card--border";
   var urlBubbleElt = document.createElement("a");
+  urlBubbleElt.className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent";
   urlBubbleElt.textContent = "PLUS D'INFOS";
   urlBubbleElt.href = link;
   urlBubbleElt.target = "_blank";

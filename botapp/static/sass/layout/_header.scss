@@ -1,0 +1,22 @@
+/**
+* All custom CSS for header
+*/
+
+.mdl-layout-title{
+
+    &::before {
+        content:"";
+        position: absolute;
+        top: 5px;
+        left: -15px;
+        @include circle(10px, $online-green);
+    }
+
+    @include respond-to("medium") {
+        &::after {
+            content: "A la recherche d'un endroit?";
+            position: fixed;
+            right: 10px;
+        }
+    }
+}

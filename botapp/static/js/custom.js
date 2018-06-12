@@ -26,12 +26,22 @@ function setSpeechBubble(profile, message) {
 
 function setSpeechBubbleNew(profile, message) {
   var bubbleElt = document.createElement("div");
-  bubbleEll.className = "mdl-card bubble-card";
+  bubbleElt.className = "mdl-card";
+
+  var bubbleContainerElt = document.createElement("div");
+  bubbleContainerElt.className = "bubble-card";
+
+  if (profile === "user") {
+    bubbleContainerElt.className += "bubble-card__user";
+  } else if (profile === "app") {
+    bubbleContainerElt.className += "bubble-card__bot";
+  }
 
   var contentBubbleElt = document.createElement("div");
   contentBubbleElt.className = "mdl-card__supporting-text";
   contentBubbleElt.textContent = message;
-  bubbleElt.appendChild(contentBubbleElt);
+  bubbleContainerElt.appendChild(contentBubbleElt);
+  bubbleElt.appendChild(bubbleContainerElt);
   document.getElementById("bubble-container").appendChild(bubbleElt);
 }
 
@@ -276,4 +286,4 @@ formElt.addEventListener("submit", function(e) {
 // Start initialisation
 // ----------------------------------
 
-setSpeechBubble("app", "Bonjour! Cherchez-vous des informations sur un lieu?");
+setSpeechBubbleNew("app", "Bonjour! Cherchez-vous des informations sur un lieu?");

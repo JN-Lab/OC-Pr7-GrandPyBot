@@ -79,32 +79,37 @@ git clone https://github.com/JN-Lab/OC-Pr7-GrandPyBot.git
 
 When your are in your directory (root):
 
-2. Set-up your virtual environnement:
+2. Modify your **config file**:
+    * Change the name file config.py.dist into config.py
+    * Set-up your secret key -> SECRET_KEY
+    * Set-up your Google API Key -> GOOGLE_API_KEY
+
+3. Set-up your virtual environnement:
 ```
 python3 -m venv env
 ```
 
-3. Activate your virtuel environment:
+4. Activate your virtual environment:
 ```
 source env/bin/activate
 ```
 
-4. Install all necessary frameworks and libraries:
+5. Install all necessary frameworks and libraries:
 ```
 pip install -r requirements.txt
 ```
 
-5. Initiate FLASK_APP, your local session variable:
+6. Initiate FLASK_APP, your local session variable:
 ```
 export FLASK_APP=run.py
 ```
 
-6. Run flask in local:
+7. Run flask in local:
 ```
 flask run
 ```
 
-7. You go on your favorite browser and copy-paste this url:
+8. You go on your favorite browser and copy-paste this url:
 ```
 http://127.0.0.1:5000/
 ```

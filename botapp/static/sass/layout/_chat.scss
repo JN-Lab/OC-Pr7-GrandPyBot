@@ -110,44 +110,8 @@ form {
 background-color: #CFD8DC;
 }
 
-/* From Chat Content Configuration: Form configuration */
-
-#message-input {
-  background-color: #FFFFFF;
-  padding-left: 5px;
-  border-top: 2px solid #CFD8DC;
-}
-
-.form-element:nth-child(2) {
-  border: none;
-}
-.form-element:nth-child(3) {
-  border: none;
-  color: #F9AA33;
-  font-weight: bold;
-  background: none;
-}
-
-#message-field {
-}
-
-#submit-button {
-  text-align: center;
-  vertical-align: middle;
-}
-
-#submit-button:hover {
-  cursor: pointer;
-}
-
 /* Footer Configuration */
 
 .loader-position {
   margin: 30px;
-}
-
-.z-depth-0 {
-  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
-  -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
 }

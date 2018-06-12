@@ -4,11 +4,12 @@
 @import 'modules/variables';
 @import 'modules/mixins';
 
+// Base
+@import 'base/base';
+
 // Layout
 @import 'layout/grid';
 @import 'layout/header';
 @import 'layout/info';
 @import 'layout/chat';
-
-// Base
-@import 'base/base';
+@import 'layout/bubble';

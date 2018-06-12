@@ -14,7 +14,7 @@
           <div class="message-writer">
             {{ form.hidden_tag() }} 
             {{ form.message(class="mdl-textfield__input", id="message-field", placeholder="Ecris ton message") }}
-            {{ form.submit(class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent", id="submit-button submit-button", value="envoyer") }}
+            {{ form.submit(class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent", id="submit-button", value="envoyer") }}
           </div>
         </form>
       </div>
@@ -22,100 +22,28 @@
   </section>
   <section class="mdl-layout__tab-panel" id="fixed-tab-2">
     <div class="page-content">
-      <div class="mdl-card info-card">
-        <div class="mdl-card__media">
-        </div>
-        <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text">GrandPy Bot</h2>
-        </div>
-        <div class="mdl-card__title">
-          <h5 class="mdl-card__title-text">The Dream GrandFather</h5>
-        </div>
-        <div class="mdl-card__supporting-text">
-          GrandPy Bot est une application réalisée dans le cadre de la formation
-          Développeur d'Application Python proposée par Openclassrooms.</br>
-          Réalisé par Julien Nuellas
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-            <a href="https://github.com/JN-Lab/OC-Pr7-GrandPyBot" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" target="_blank"><i class="fab fa-github fa-3x" align="middle"></i></a>
-            <a href="https://www.linkedin.com/in/julien-nuellas/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
+      <div class="info-container">
+        <div class="mdl-card info-card">
+          <div class="mdl-card__media">
+          </div>
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">GrandPy Bot</h2>
+          </div>
+          <div class="mdl-card__title">
+            <h5 class="mdl-card__title-text">The Dream GrandFather</h5>
+          </div>
+          <div class="mdl-card__supporting-text">
+            GrandPy Bot est une application réalisée dans le cadre de la formation
+            Développeur d'Application Python proposée par Openclassrooms.</br>
+            Réalisé par Julien Nuellas
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+              <a href="https://github.com/JN-Lab/OC-Pr7-GrandPyBot" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" target="_blank"><i class="fab fa-github fa-3x" align="middle"></i></a>
+              <a href="https://www.linkedin.com/in/julien-nuellas/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </main>
-<!-- 
-  <div id="tagline-container" class="global-element">
-    <p>GrandPy Bot</p>
-    <p>Demande-lui le lieu où tu souhaites te rendre <br> Et il te donnera toutes les informations nécessaires</p>
-  </div>
-  <div id="main-container" class="global-element card-custom">
-
-    {# Message Card #}
-    <div id="message-container" class="main-element">
-      {# Title of message card #}
-      <div id="message-title" class="message-element main-title">
-        <div class="message-title-element title">GrandPy Bot</div>
-      </div>
-
-      {# Menu in order to print app information or chat with grandpy into message historic part #}
-      <nav id="message-nav" class="message-element nav-message">
-        <button id="chat-button" class="message-nav-element nav-selected">CHAT</button>
-        <button id="info-button" class="message-nav-element nav-unselected">INFOS</button>
-      </nav>
-
-      {# Where Messages and informations are done #}
-      <div id="message-content" class="message-element">
-        <div id="info-container" class="content-element">
-          <div id="avatar-profile" class="info-element">
-            <div id="avatar-image" class="avatar-element">
-              <img src="{{ url_for('static', filename='img/avatar-example.png') }}" alt="grandpy-avatar" class="">
-            </div>
-            <div id="avatar-description" class="avatar-element">
-              <div class="avatar-description-element"><p id="avatar-name">GrandPy Bot</p></div>
-              <div  class="avatar-description-element"><p id="avatar-job">Dream GrandFather</p></div>
-            </div>
-          </div>
-          <div id="project-description" class="info-element">
-            <p>GrandPy Bot est une application réalisée dans le cadre de la formation
-            Développeur d'Application Python proposée par Openclassrooms.</br>
-            Réalisé par Julien Nuellas</p>
-          </div>
-          <div id="social-link" class="info-element card-footer">
-            <ul>
-              <li>
-                <a href="https://github.com/JN-Lab/OC-Pr7-GrandPyBot" class="social-element" target="_blank"><i class="fab fa-github fa-3x" align="middle"></i></a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/in/julien-nuellas/" class="social-element" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div id="chat-container" class="content-element">
-          {# All the messages realized during discussions #}
-          <div id="message-historic" class="chat-element">
-            <div id="bubble-container" class="historic-element">
-              {# where bubble will be pushed #}
-            </div>
-          </div>
-          {# GrandPy Status Treatment - if he thinks, write, or nothing #}
-          <div id="message-status" class="chat-element">
-              <div id="status-text" class="message-status-element"></div>
-              <div id="status-loading" class="message-status-element"></div>
-          </div>
-
-          {# Block where user writes messages #}
-          <div id="message-input" class="chat-element">
-            <form id="form-container" action="" method="" class="message-input-element">
-              {{ form.hidden_tag() }}
-              {{ form.message(class="form-element browser-default", id="message-field", placeholder="Ecris ton message") }}
-              {{ form.submit(class="form-element", id="submit-button", value="envoyer") }}
-            </form>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div> -->
 {% endblock %}

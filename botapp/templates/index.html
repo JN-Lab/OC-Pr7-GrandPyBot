@@ -1,6 +1,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<main class="mdl-layout__content">
+  <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+    <div class="page-content">
+      <div class="chat-content">
+        
+      </div>
+      <div class="chat-form">
+        <form id="form-container" action="" method="" class="message-input-element">
+          <div class="message-writer">
+            {{ form.hidden_tag() }} 
+            {{ form.message(class="mdl-textfield__input", id="message-field", placeholder="Ecris ton message") }}
+            {{ form.submit(class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent", id="submit-button submit-button", value="envoyer") }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+    <div class="page-content">
+      <div class="mdl-card info-card">
+        <div class="mdl-card__media">
+        </div>
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">GrandPy Bot</h2>
+        </div>
+        <div class="mdl-card__title">
+            <h5 class="mdl-card__title-text">The Dream GrandFather</h5>
+          </div>
+        <div class="mdl-card__supporting-text">
+          GrandPy Bot est une application réalisée dans le cadre de la formation
+          Développeur d'Application Python proposée par Openclassrooms.</br>
+          Réalisé par Julien Nuellas
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a href="https://github.com/JN-Lab/OC-Pr7-GrandPyBot" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" target="_blank"><i class="fab fa-github fa-3x" align="middle"></i></a>
+            <a href="https://www.linkedin.com/in/julien-nuellas/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- 
   <div id="tagline-container" class="global-element">
     <p>GrandPy Bot</p>
     <p>Demande-lui le lieu où tu souhaites te rendre <br> Et il te donnera toutes les informations nécessaires</p>
@@ -73,5 +115,5 @@
       </div>
 
     </div>
-  </div>
+  </div> -->
 {% endblock %}

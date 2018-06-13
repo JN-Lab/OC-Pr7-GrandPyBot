@@ -1,4 +1,10 @@
 /**
+* All the mixins
+*/
+/**
+* All the basic custom CSS
+*/
+/**
  * Set up a decent box model on the root element
  */
 html {
@@ -26,6 +32,7 @@ body {
   background-color: #F5F5F5; }
 
 section {
+  position: absolute;
   width: 100%;
   height: 100%; }
 
@@ -79,7 +86,7 @@ Specific CSS for info card
 .info-card > .mdl-card__actions > a {
   height: 40px; }
 
-/* All elements concerning chat form*/
+/* All elements concerning chat form  */
 .chat-content {
   width: 100%;
   flex: 1;
@@ -141,7 +148,8 @@ form {
   text-decoration: none; }
 
 .mdl-card.mdl-card__bubble {
-  min-height: 0px;
+  min-height: auto;
+  height: auto;
   width: 90%;
   max-width: 600px; }
 

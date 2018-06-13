@@ -2,7 +2,7 @@
 Repository for Project 7 from Openclassrooms cursus in Software Developement
 
 ## Project Description
-This is a web application to help user to find an address and learn more about the story of this location.
+This is a web application build with **Flask** to help user to find an address and learn more about the story of this location.
 
 ### Functionalities
 * AJAX interactions : the user send his question by pressing enter key and the answer is directly printed on the screen, without reloading the webpage.

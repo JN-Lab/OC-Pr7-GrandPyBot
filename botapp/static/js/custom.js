@@ -182,7 +182,7 @@ formElt.addEventListener("submit", function(e) {
   if (data) {
     setSpeechBubble("user", data);
 
-    ajaxPost("https://grandpy-bot-labs.herokuapp.com//treatment", data,
+    ajaxPost("https://127.0.0.1:5000/treatment", data,
       function(response) {
         response = JSON.parse(response);
         console.log(response);

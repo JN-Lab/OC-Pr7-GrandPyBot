@@ -1,5 +1,5 @@
 env/
-config.py.dist
+config.py
 __pycache__/
 .pytest_cache
 .sass-cache

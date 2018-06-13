@@ -20,7 +20,7 @@ html {
 */
 html,
 body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-family: "Roboto", "Helvetica", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #F5F5F5; }
@@ -36,17 +36,6 @@ section {
   flex-direction: column;
   align-items: center;
   overflow: hidden; }
-
-.mdl-card {
-  width: 100%;
-  max-width: 800px;
-  margin-bottom: 5px; }
-  @media (min-width: 800px) {
-    .mdl-card {
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); } }
-
-.mdl-card__actions > a {
-  text-decoration: none; }
 
 /**
 * All custom CSS for header
@@ -108,6 +97,7 @@ Specific CSS for info card
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
   transform: rotate(180deg);
   direction: ltr; }
 
@@ -135,77 +125,37 @@ form {
   justify-content: flex-start;
   align-items: center; }
 
-/* From Message Content : Speech Bubble Configuration */
-.talk-bubble {
-  margin: 30px;
-  display: inline-block;
-  position: relative;
-  width: auto;
-  height: auto;
-  background-color: #CFD8DC; }
-
-.round {
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px; }
-
-.tri-right.right-in:after {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: -20px;
-  top: 38px;
-  bottom: auto;
-  border: 12px solid;
-  border-color: #CFD8DC transparent transparent #CFD8DC; }
-
-.tri-right.left-in:after {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: -20px;
-  right: auto;
-  top: 38px;
-  bottom: auto;
-  border: 12px solid;
-  border-color: #A3BDED #A3BDED transparent transparent; }
-
-.talktext {
-  padding: 1em;
-  text-align: left;
-  line-height: 1em; }
-
-.talktext p {
-  /* remove webkit p margins */
-  -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em; }
-
-/* From Chat Content Configuration: Status configuration */
-#message-status {
-  background-color: #CFD8DC; }
-
-/* Footer Configuration */
-.loader-position {
-  margin: 30px; }
-
 /**
 * All custom CSS for bubbles
 */
-.bubble-card {
-  height: auto; }
+.mdl-card {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  @media (min-width: 800px) {
+    .mdl-card {
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); } }
 
-.bubble-card__bot {
+.mdl-card__actions > a {
+  text-decoration: none; }
+
+.mdl-card.mdl-card__bubble {
+  min-height: 0px;
+  width: 90%;
+  max-width: 600px; }
+
+.mdl-card.talk-left {
+  border-radius: 0 20px 0 20px;
   background-color: #A3BDED;
-  margin-left: 30px; }
+  margin-left: 0px; }
 
-.bubble-card__user {
-  background-color: #F5F5F5;
-  margin-left: 60px; }
+.mdl-card.talk-right {
+  border-radius: 20px 0px 20px 0px;
+  background-color: #FFFFFF;
+  margin-left: 0px; }
 
-.bubble-card > .mdl-card__actions > a {
-  padding-left: 50px; }
+.mdl-spinner.mdl-spinner__loader {
+  margin: 10px; }
 
 /*# sourceMappingURL=main.css.map */

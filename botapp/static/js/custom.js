@@ -6,42 +6,15 @@ function setSpeechBubble(profile, message) {
   var bubbleElt = document.createElement("div");
 
   if (profile === "user") {
-    bubbleElt.className = "speech-element talk-bubble tri-right round right-in scale-transition scale-in";
-    bubbleElt.style.marginLeft = "60px";
+    bubbleElt.className = "mdl-card mdl-card__bubble mdl-shadow--2dp talk-right";
   } else if (profile === "app") {
-    bubbleElt.className = "speech-element talk-bubble tri-right round left-in";
-    bubbleElt.style.marginLeft = "30px";
-    bubbleElt.style.backgroundColor = "#A3BDED";
-  }
-
-  var speechBubbleElt = document.createElement("div");
-  speechBubbleElt.className = "talktext";
-
-  var textElt = document.createElement("p");
-  textElt.textContent = message;
-  speechBubbleElt.appendChild(textElt);
-  bubbleElt.appendChild(speechBubbleElt);
-  document.getElementById("bubble-container").appendChild(bubbleElt);
-}
-
-function setSpeechBubbleNew(profile, message) {
-  var bubbleElt = document.createElement("div");
-  bubbleElt.className = "mdl-card";
-
-  var bubbleContainerElt = document.createElement("div");
-  bubbleContainerElt.className = "bubble-card";
-
-  if (profile === "user") {
-    bubbleContainerElt.className += "bubble-card__user";
-  } else if (profile === "app") {
-    bubbleContainerElt.className += "bubble-card__bot";
+    bubbleElt.className = "mdl-card mdl-card__bubble mdl-shadow--2dp talk-left";
   }
 
   var contentBubbleElt = document.createElement("div");
   contentBubbleElt.className = "mdl-card__supporting-text";
   contentBubbleElt.textContent = message;
-  bubbleContainerElt.appendChild(contentBubbleElt);
-  bubbleElt.appendChild(bubbleContainerElt);
+  bubbleElt.appendChild(contentBubbleElt);
   document.getElementById("bubble-container").appendChild(bubbleElt);
 }
 
@@ -102,35 +75,8 @@ function setStoryBubble(title, text, link) {
 
 function setLoaderBubble() {
   var preloaderElt = document.createElement("div");
-  preloaderElt.id = "loader";
-  preloaderElt.className = "loader-position speech-element preloader-wrapper active";
-  preloaderElt.style.marginRight = "60px";
-  var spinnerElt = document.createElement("div");
-  spinnerElt.className = "spinner-layer spinner-blue-only";
-
-  var clipperElt = document.createElement("div");
-  clipperElt.className = "circle-clipper left";
-  var circleClipperElt = document.createElement("div");
-  circleClipperElt.className = "circle";
-  clipperElt.appendChild(circleClipperElt);
-
-  var gapElt = document.createElement("div");
-  gapElt.className = "gap-patch";
-  var circleGapElt = document.createElement("div");
-  circleGapElt.className = "circle";
-  gapElt.appendChild(circleGapElt);
-
-  var rightElt = document.createElement("div");
-  rightElt.className = "circle-clipper right";
-  var circleRightElt = document.createElement("div");
-  circleRightElt.className = "circle";
-  rightElt.appendChild(circleRightElt);
-
-  spinnerElt.appendChild(clipperElt);
-  spinnerElt.appendChild(gapElt);
-  spinnerElt.appendChild(rightElt);
-
-  preloaderElt.appendChild(spinnerElt);
+  preloaderElt.id= "loader";
+  preloaderElt.className = "mdl-spinner mdl-spinner__loader mdl-js-spinner is-active";
   document.getElementById("bubble-container").appendChild(preloaderElt);
 }
 
@@ -192,27 +138,6 @@ function setResponse(response) {
 }
 
 // ----------------------------------
-// Waiting loader
-// ----------------------------------
-
-function waitingMessage() {
-  var messageElt = document.getElementById("status-text");
-  var loaderElt = document.getElementById('status-loading');
-  messageElt.textContent = "laissez-moi réfléchir"
-  messageElt.style.display = "inline";
-  loaderElt.style.display = "inline";
-  var count = 0;
-  if (count < 3) {
-    loaderElt.textContent += ".";
-    count += 1;
-    console.log(loaderElt.textContent);
-    console.log(count);
-  } else {
-    loaderElt.textContent = "";
-  }
-}
-
-// ----------------------------------
 // Ajax Interactions on Submit Button
 // ----------------------------------
 
@@ -222,15 +147,9 @@ function ajaxPost(url, data, callback, isJson) {
     req.open("POST", url);
 
     req.addEventListener("loadstart", function () {
-      var IntervalId = setInterval(waitingMessage(), 10);
       setLoaderBubble();
     })
     req.addEventListener("loadend", function () {
-      var messageElt = document.getElementById("status-text");
-      var loaderElt = document.getElementById('status-loading');
-      messageElt.style.display = "none";
-      loaderElt.style.display = "none";
-
       var loaderElt = document.getElementById("loader");
       loaderElt.remove();
     })
@@ -286,4 +205,4 @@ formElt.addEventListener("submit", function(e) {
 // Start initialisation
 // ----------------------------------
 
-setSpeechBubbleNew("app", "Bonjour! Cherchez-vous des informations sur un lieu?");
+setSpeechBubble("app", "Bonjour! Cherchez-vous des informations sur un lieu?");

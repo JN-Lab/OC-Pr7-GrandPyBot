@@ -5,6 +5,7 @@
     max-width: 600px;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 1em;
     
     @include shadow-2dp();
   }
@@ -12,11 +13,13 @@
   .card-bubble.talk-left__simple {
     border-radius: 0 20px 20px 20px;
     background-color: $green-light;
+    margin-right: 25px;
   }
   
   .card-bubble.talk-right__simple {
     border-radius: 20px 0px 20px 20px;
     background-color: $white;
+    margin-left: 25px;
   }
   
   .card-bubble__text {

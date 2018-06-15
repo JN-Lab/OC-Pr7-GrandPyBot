@@ -43,6 +43,8 @@ header.header-title {
 footer {
   width: 100%;
   border-top: 1px solid #045D56;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
@@ -60,9 +62,12 @@ form {
 
 form .message-writer {
   flex: 1;
-  font-size: 1.5em;
+  font-size: 1em;
   border: none;
   padding: 3px; }
+  @media (min-width: 800px) {
+    form .message-writer {
+      font-size: 1.5em; } }
 
 .btn-simple {
   height: 100%;
@@ -72,10 +77,13 @@ form .message-writer {
 .btn-simple__content {
   background: none;
   border: none;
-  font-size: 2em;
+  font-size: 1.3em;
   font-weight: bold;
   font-variant: small-caps;
   color: #045D56; }
+  @media (min-width: 800px) {
+    .btn-simple__content {
+      font-size: 2em; } }
 
 /**
 Specific CSS for info card
@@ -124,23 +132,32 @@ section {
   align-items: center; }
 
 .message-alignment {
+  height: 100%;
+  width: 100%;
   transform: rotate(180deg);
-  direction: ltr; }
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center; }
 
 .card-bubble {
   width: 90%;
   max-width: 600px;
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 1em;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
 
 .card-bubble.talk-left__simple {
   border-radius: 0 20px 20px 20px;
-  background-color: #1EB980; }
+  background-color: #1EB980;
+  margin-right: 25px; }
 
 .card-bubble.talk-right__simple {
   border-radius: 20px 0px 20px 20px;
-  background-color: #FFFFFF; }
+  background-color: #FFFFFF;
+  margin-left: 25px; }
 
 .card-bubble__text {
   color: rgba(0, 0, 0, 0.54);
@@ -153,7 +170,9 @@ section {
   max-width: 800px;
   min-width: 300px;
   background-color: #FFFFFF;
-  border-radius: 5px; }
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px; }
   @media (min-width: 800px) {
     .card {
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); } }

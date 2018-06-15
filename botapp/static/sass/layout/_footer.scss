@@ -2,6 +2,8 @@
 footer {
     width: 100%;
     border-top: 1px solid $green-dark;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: $white;
     
     @include flex-box(column, center, center);
@@ -17,9 +19,13 @@ footer {
   
   form .message-writer {
     flex: 1;
-    font-size: 1.5em;
+    font-size: 1em;
     border: none;
     padding: 3px;
+
+    @include respond-to('medium') {
+      font-size: 1.5em;
+    }
   }
   
   .btn-simple {
@@ -31,8 +37,12 @@ footer {
   .btn-simple__content {
     background: none;
     border: none;
-    font-size: 2em;
+    font-size: 1.3em;
     font-weight: bold;
     font-variant: small-caps;
     color: $green-dark;
+
+    @include respond-to('medium') {
+      font-size: 2em;
+    }
   }

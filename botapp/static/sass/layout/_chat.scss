@@ -21,6 +21,10 @@ section {
 }
 
 .message-alignment {
+  height: 100%;
+  width: 100%;
   transform: rotate(180deg);
   direction: ltr;
+
+  @include flex-box(column, flex-end, center);
 }

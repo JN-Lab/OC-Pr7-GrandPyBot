@@ -21,57 +21,56 @@ function setSpeechBubble(profile, message) {
 
 function setMapBubble(latitude, longitude, address) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "mdl-card bubble-card";
+  bubbleElt.className = "card";
 
-  var mapBubbleElt = document.createElement('div');
-  mapBubbleElt.className = "mdl-card__media";
-  mapBubbleElt.style.height = "300px";
-  // mapBubbleElt.style.width = "100%";
-  mapBubbleElt.id = String((latitude + longitude) + Math.random());
-  bubbleElt.appendChild(mapBubbleElt);
+  var mediaBubbleElt = document.createElement("div");
+  mediaBubbleElt.className = "card-media";
+  mediaBubbleElt.id = String((latitude + longitude) + Math.random());
+  bubbleElt.appendChild(mediaBubbleElt);
 
   var linkBubbleElt = document.createElement("div");
-  linkBubbleElt.className = "mdl-card__actions mdl-card--border";
+  linkBubbleElt.className = "card-actions";
   var urlBubbleElt = document.createElement("a");
-  urlBubbleElt.className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent";
+  urlBubbleElt.className = "card-actions__link";
   urlBubbleElt.textContent = "ITINERAIRE";
   urlBubbleElt.href = "https://www.google.com/maps/dir/?api=1&destination=" + address.replace(/\s+/g, "+");
   urlBubbleElt.target = "_blank";
   linkBubbleElt.appendChild(urlBubbleElt);
   bubbleElt.appendChild(linkBubbleElt);
 
-  document.getElementById("bubble-container").appendChild(bubbleElt);
-  initMap(latitude, longitude, mapBubbleElt.id);
+  document.getElementById("message-container").appendChild(bubbleElt);
+  initMap(latitude, longitude, mediaBubbleElt.id);
 }
 
 function setStoryBubble(title, text, link) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "mdl-card bubble-card";
+  bubbleElt.className = "card";
 
   var titleBubbleElt = document.createElement("div");
-  titleBubbleElt.className = "mdl-card__title";
+  titleBubbleElt.className = "card-title";
   var titleTextElt = document.createElement("h2");
-  titleTextElt.className = "mdl-card__title-text";
   titleTextElt.textContent = title;
   titleBubbleElt.appendChild(titleTextElt);
   bubbleElt.appendChild(titleBubbleElt);
 
   var contentBubbleElt = document.createElement("div");
-  contentBubbleElt.className = "mdl-card__supporting-text";
-  contentBubbleElt.textContent = text;
+  contentBubbleElt.className = "card-text";
+  var textBubbleElt = document.createElement("p");
+  textBubbleElt.textContent = text;
+  contentBubbleElt.appendChild(textBubbleElt);
   bubbleElt.appendChild(contentBubbleElt);
 
   var linkBubbleElt = document.createElement("div");
-  linkBubbleElt.className = "mdl-card__actions mdl-card--border";
+  linkBubbleElt.className = "card-actions card-border-top";
   var urlBubbleElt = document.createElement("a");
-  urlBubbleElt.className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent";
+  urlBubbleElt.className = "card-actions__link";
   urlBubbleElt.textContent = "PLUS D'INFOS";
   urlBubbleElt.href = link;
   urlBubbleElt.target = "_blank";
   linkBubbleElt.appendChild(urlBubbleElt);
   bubbleElt.appendChild(linkBubbleElt);
 
-  document.getElementById("bubble-container").appendChild(bubbleElt);
+  document.getElementById("message-container").appendChild(bubbleElt);
 }
 
 function setLoaderBubble() {

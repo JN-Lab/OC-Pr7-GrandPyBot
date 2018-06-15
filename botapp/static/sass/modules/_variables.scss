@@ -6,14 +6,17 @@
 $font-stack: 'Roboto', 'Helevetica', sans-serif;
   
 // Colors
-$orange: #FF6859;
+$orange: #F4511E;
 $yellow: #FFCF44;
 $green-light: #1EB980;
 $green-dark: #045D56;
-$blue-light: #A3BDED;
-$blue-dark: #01579B;
+$dark-light: rgba(0,0,0, 0.54);
 $white: #FFFFFF;
 $grey: #F5F5F5;
+
+$blue-light: #A3BDED;
+$blue-dark: #01579B;
+
 $grey-dark: #757575;
 
 // For Shadows
@@ -25,12 +28,14 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
 $chatbox-max-width: 800px;
 
 // For talk bubbles
-$talk-bubble: rgba(255,255,255, 1);
-$card-text-color: rgba(black, 0.54);
 $card-text__font-size: 14px !default;
 $card-text__line-height: 18px !default;
 $card-text__horizontal-padding: 16px !default;
 $card-text__vertical-padding: 16px !default;
+
+// For Card bubbles
+$card-max-width: 800px;
+$card-min-width: 300px;
 
 // Breakpoints Screen
 $breakpoints: (

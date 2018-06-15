@@ -1,9 +1,8 @@
 // Talk Bubble CSS set-up
 
 .card-bubble {
-    width: 100%;
+    width: 90%;
     max-width: 600px;
-    background-color: $talk-bubble;
     margin-top: 10px;
     margin-bottom: 10px;
     
@@ -17,10 +16,11 @@
   
   .card-bubble.talk-right__simple {
     border-radius: 20px 0px 20px 20px;
+    background-color: $white;
   }
   
   .card-bubble__text {
-    color: $card-text-color;
+    color: $dark-light;
     font-size: $card-text__font-size;
     line-height: $card-text__line-height;
     padding: $card-text__vertical-padding $card-text__horizontal-padding;

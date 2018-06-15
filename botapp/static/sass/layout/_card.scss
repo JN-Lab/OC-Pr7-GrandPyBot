@@ -1,0 +1,52 @@
+// Card CSS Setup
+.card {
+    width: 100%;
+    max-width: $card-max-width;
+    min-width: $card-min-width;
+    background-color: $white;
+    border-radius: 5px;
+    
+    @include respond-to("medium")
+    {
+        @include shadow-2dp();
+    }
+  }
+  
+  .card-title {
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: $green-light;
+  }
+  
+  .card-text {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: $dark-light;
+  }
+  
+  .card-actions {
+    padding: 15px;
+    @include flex-box(row, flex-start, center);
+  }
+  
+  .card-actions__link {
+    text-decoration: none;
+    font-size: 1em;
+    font-style: normal;
+    font-variant: small-caps;
+    margin-right: 10px;
+    color: $orange;
+  }
+  
+  .card-media {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+    
+    @include flex-box(column, flex-end, flex-end);
+  }
+  
+  .card-border-top {
+    border-top: 1px solid $dark-light;
+  }

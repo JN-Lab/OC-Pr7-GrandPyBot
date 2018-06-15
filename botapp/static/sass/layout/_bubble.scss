@@ -1,44 +1,27 @@
-/**
-* All custom CSS for bubbles
-*/
+// Talk Bubble CSS set-up
 
-// Global
-.mdl-card {
+.card-bubble {
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
+    background-color: $talk-bubble;
     margin-top: 10px;
     margin-bottom: 10px;
-
-    @include respond-to('medium') {
-        @include shadow-2dp();
-    }
-}
-
-// For bubbles with actions
-.mdl-card__actions > a {
-    text-decoration: none;
-}
-
-// For talk bubble
-.mdl-card.mdl-card__bubble {
-    min-height: 0px;
-    width: 90%;
-    max-width: 600px;
-}
+    
+    @include shadow-2dp();
+  }
   
-.mdl-card.talk-left {
-    border-radius: 0 20px 0 20px;
-    background-color: $blue-light;
-    margin-left: 0px;
-}
+  .card-bubble.talk-left__simple {
+    border-radius: 0 20px 20px 20px;
+    background-color: $green-light;
+  }
   
-.mdl-card.talk-right {
-    border-radius: 20px 0px 20px 0px;
-    background-color: $white;
-    margin-left: 0px;
-}
-
-// for loader bubble
-.mdl-spinner.mdl-spinner__loader {
-    margin: 10px;
-}
+  .card-bubble.talk-right__simple {
+    border-radius: 20px 0px 20px 20px;
+  }
+  
+  .card-bubble__text {
+    color: $card-text-color;
+    font-size: $card-text__font-size;
+    line-height: $card-text__line-height;
+    padding: $card-text__vertical-padding $card-text__horizontal-padding;
+  }

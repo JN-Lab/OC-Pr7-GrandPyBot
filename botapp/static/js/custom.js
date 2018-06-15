@@ -4,18 +4,19 @@
 
 function setSpeechBubble(profile, message) {
   var bubbleElt = document.createElement("div");
-
+  
   if (profile === "user") {
-    bubbleElt.className = "mdl-card mdl-card__bubble mdl-shadow--2dp talk-right";
+    bubbleElt.className = "card-bubble talk-right__simple";
   } else if (profile === "app") {
-    bubbleElt.className = "mdl-card mdl-card__bubble mdl-shadow--2dp talk-left";
+    bubbleElt.className = "card-bubble talk-left__simple";
   }
-
+  
   var contentBubbleElt = document.createElement("div");
-  contentBubbleElt.className = "mdl-card__supporting-text";
+  contentBubbleElt.className = "card-bubble__text";
   contentBubbleElt.textContent = message;
+  
   bubbleElt.appendChild(contentBubbleElt);
-  document.getElementById("bubble-container").appendChild(bubbleElt);
+  document.getElementById("message-container").appendChild(bubbleElt);
 }
 
 function setMapBubble(latitude, longitude, address) {

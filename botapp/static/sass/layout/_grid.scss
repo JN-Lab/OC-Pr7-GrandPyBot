@@ -1,0 +1,38 @@
+// Footer CSS set-up
+footer {
+    width: 100%;
+    border-top: 1px solid $green-dark;
+    background-color: $white;
+    
+    @include flex-box(column, center, center);
+  }
+  
+  form {
+    height: 100%;
+    width: 100%;
+    max-width: $chatbox-max-width;
+    
+    @include flex-box(row, center, center);
+  }
+  
+  form .message-writer {
+    flex: 1;
+    font-size: 1.5em;
+    border: none;
+    padding: 3px;
+  }
+  
+  .btn-simple {
+    height: 100%;
+    background: none;
+    border: none;
+  }
+  
+  .btn-simple__content {
+    background: none;
+    border: none;
+    font-size: 2em;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: $green-dark;
+  }

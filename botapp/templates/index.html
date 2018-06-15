@@ -1,25 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<main class="mdl-layout__content">
-  <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
-    <div class="page-content">
-      <div class="chat-content">
-        <div id="bubble-container" class="bubble-historic">
-        </div>
-        
-      </div>
-      <div class="chat-form">
-        <form id="form-container" action="" method="" class="message-input-element">
-          <div class="message-writer">
-            {{ form.hidden_tag() }} 
-            {{ form.message(class="mdl-textfield__input", id="message-field", placeholder="Ecris ton message") }}
-            {{ form.submit(class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent", id="submit-button", value="envoyer") }}
-          </div>
-        </form>
-      </div>
+
+<main>
+  <section>
+    <div id="message-container" class="message-alignment">
     </div>
   </section>
+</main>
+<footer>
+  <form method="" action="">
+      {{ form.hidden_tag() }} 
+      {{ form.message(class="message-writer", placeholder="Ecris ton message") }}
+    <button class="btn-simple">
+      {{ form.submit(class="btn-simple__content", id="submit-button", value="envoyer") }}
+    </button>
+  </form>
+</footer>
+
+<!--
   <section class="mdl-layout__tab-panel" id="fixed-tab-2">
     <div class="page-content">
       <div class="info-container">
@@ -45,5 +44,5 @@
       </div>
     </div>
   </section>
-</main>
+-->
 {% endblock %}

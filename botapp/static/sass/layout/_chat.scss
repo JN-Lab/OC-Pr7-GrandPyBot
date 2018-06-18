@@ -1,5 +1,5 @@
 // Chat Container CSS set-up
-main {
+.main-chat {
   width: 100%;
   flex: 1;
   overflow: auto;
@@ -7,7 +7,7 @@ main {
   @include flex-box(column, center, center);
 }
 
-section {
+.section-chat {
   height: 100%;
   width: 100%;
   max-width: $chatbox-max-width;

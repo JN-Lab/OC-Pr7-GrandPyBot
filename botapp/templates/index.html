@@ -2,14 +2,15 @@
 
 {% block content %}
 
-
-    <main>
-      <section >
+<main>
+  <section id="chat" class="nav-element">
+    <div class="main-chat">
+      <section class="section-chat">
         <div id="message-container" class="message-alignment">
         </div>
       </section>
-    </main>
-    <footer>
+    </div>
+    <div class="footer-chat">
       <form method="" action="">
           {{ form.hidden_tag() }} 
           {{ form.message(class="message-writer", placeholder="Ecris ton message") }}
@@ -17,8 +18,12 @@
           {{ form.submit(class="btn-simple__content", id="submit-button", value="envoyer") }}
         </button>
       </form>
-    </footer>
-
+    </div>
+  </section>
+  <section id="info" class="nav-element">
+    INFO
+  </section>
+</main>
 
 <!--
   <section class="mdl-layout__tab-panel" id="fixed-tab-2">

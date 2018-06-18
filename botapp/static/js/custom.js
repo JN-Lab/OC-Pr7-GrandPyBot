@@ -1,4 +1,68 @@
 // ----------------------------------
+// Nav Management
+// ----------------------------------
+
+// Function to get the good section id to activate
+function getSectionId(navLinkElt) {
+  var sectionId = "";
+  for (let link of navLinkElt) {
+    if (/is-active/i.test(link.className)) {
+      /#(.+)$/.exec(link.href);
+      var regex = RegExp.$1;
+      sectionId = regex;      
+    }
+  }
+  return sectionId;
+}
+
+// Function to push "activate" class to the selected section
+function setSectionActivation(sectionId, sectionElt) {
+  for (let section of sectionElt) {
+    if (section.id === sectionId) {
+      section.className = "nav-element";
+    } else {
+      section.className = "nav-element inactive";
+    }
+  }
+}
+
+// function that link all operations
+
+function manageSection(navLinkElt, sectionElt) {
+  var sectionId = getSectionId(navLinkElt);
+  setSectionActivation(sectionId, sectionElt);
+}
+
+// Function to switch is-active class when a nav link is clicked
+function manageNavActiveClass(hrefLink, navLinkElt) {
+  for (let link of navLinkElt) {
+    if (link.href === hrefLink) {
+      link.className = "nav-link is-active";
+    } else {
+      link.className = "nav-link";
+    }
+  }
+}
+
+/**
+CODE EXECUTION
+*/
+
+var navLinkElt = document.getElementsByClassName("nav-link");
+
+var sectionElt = document.getElementsByClassName("nav-element");
+
+manageSection(navLinkElt, sectionElt);
+
+for (let link of navLinkElt) {
+  link.addEventListener("click", function(e) {
+    var linkClicked = e.target;
+    manageNavActiveClass(linkClicked.href, navLinkElt);
+    manageSection(navLinkElt, sectionElt);
+  });
+}
+
+// ----------------------------------
 // Message Bubble Creation
 // ----------------------------------
 

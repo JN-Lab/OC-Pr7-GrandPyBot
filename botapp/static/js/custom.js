@@ -234,7 +234,7 @@ formElt.addEventListener("submit", function(e) {
         console.log(response);
         setResponse(response);
         if ((response.status === "LOCATION_MISSING") || (response.status === "WRONG_LOCATION")) {
-          formElt.elements.message.value = "Je souhaiterais aller...";
+          formElt.elements.message.value = "Je souhaiterais aller ";
         } else {
           formElt.elements.message.value = "";
         }

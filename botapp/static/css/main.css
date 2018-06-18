@@ -75,7 +75,7 @@ nav {
   margin-right: 10px; }
   .nav-item > a {
     text-decoration: none;
-    font-size: 1em;
+    font-size: 1.5em;
     font-style: normal;
     font-variant: small-caps;
     color: #FFFFFF; }
@@ -132,30 +132,6 @@ form .message-writer {
   @media (min-width: 800px) {
     .btn-simple__content {
       font-size: 2em; } }
-
-/**
-Specific CSS for info card
-*/
-.info-container {
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: scroll; }
-
-.info-card > .mdl-card__media {
-  height: 200px;
-  background: url("../img/avatar-example.png") center no-repeat #FFCF44; }
-
-.info-card > .mdl-card__actions {
-  display: flex;
-  flex-direction: row;
-  justify-content: center; }
-
-.info-card > .mdl-card__actions > a {
-  height: 40px; }
 
 .main-chat {
   width: 100%;
@@ -255,7 +231,7 @@ Specific CSS for info card
   font-size: 1em;
   font-style: normal;
   font-variant: small-caps;
-  margin-right: 10px;
+  margin-right: 50px;
   color: #F4511E; }
 
 .card-media {

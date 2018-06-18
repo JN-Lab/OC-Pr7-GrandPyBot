@@ -44,24 +44,6 @@ function manageNavActiveClass(hrefLink, navLinkElt) {
   }
 }
 
-/**
-CODE EXECUTION
-*/
-
-var navLinkElt = document.getElementsByClassName("nav-link");
-
-var sectionElt = document.getElementsByClassName("nav-element");
-
-manageSection(navLinkElt, sectionElt);
-
-for (let link of navLinkElt) {
-  link.addEventListener("click", function(e) {
-    var linkClicked = e.target;
-    manageNavActiveClass(linkClicked.href, navLinkElt);
-    manageSection(navLinkElt, sectionElt);
-  });
-}
-
 // ----------------------------------
 // Message Bubble Creation
 // ----------------------------------
@@ -269,4 +251,19 @@ formElt.addEventListener("submit", function(e) {
 // Start initialisation
 // ----------------------------------
 
-setSpeechBubble("app", "Bonjour! Cherchez-vous des informations sur un lieu?");
+// For nav management
+var navLinkElt = document.getElementsByClassName("nav-link");
+var sectionElt = document.getElementsByClassName("nav-element");
+
+manageSection(navLinkElt, sectionElt);
+
+for (let link of navLinkElt) {
+  link.addEventListener("click", function(e) {
+    var linkClicked = e.target;
+    manageNavActiveClass(linkClicked.href, navLinkElt);
+    manageSection(navLinkElt, sectionElt);
+  });
+}
+
+// Welcome message
+setSpeechBubble("app", "Bonjour! Cherchez-vous des informations sur un lieu en France?");

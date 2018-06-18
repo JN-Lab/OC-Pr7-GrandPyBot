@@ -76,8 +76,8 @@ function setStoryBubble(title, text, link) {
 function setLoaderBubble() {
   var preloaderElt = document.createElement("div");
   preloaderElt.id= "loader";
-  preloaderElt.className = "mdl-spinner mdl-spinner__loader mdl-js-spinner is-active";
-  document.getElementById("bubble-container").appendChild(preloaderElt);
+  preloaderElt.className = "spinner";
+  document.getElementById("message-container").appendChild(preloaderElt);
 }
 
 // -----------------------------------------------------

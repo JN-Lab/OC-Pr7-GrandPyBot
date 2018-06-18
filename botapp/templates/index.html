@@ -2,21 +2,23 @@
 
 {% block content %}
 
-<main>
-  <section>
-    <div id="message-container" class="message-alignment">
-    </div>
-  </section>
-</main>
-<footer>
-  <form method="" action="">
-      {{ form.hidden_tag() }} 
-      {{ form.message(class="message-writer", placeholder="Ecris ton message") }}
-    <button class="btn-simple">
-      {{ form.submit(class="btn-simple__content", id="submit-button", value="envoyer") }}
-    </button>
-  </form>
-</footer>
+
+    <main>
+      <section >
+        <div id="message-container" class="message-alignment">
+        </div>
+      </section>
+    </main>
+    <footer>
+      <form method="" action="">
+          {{ form.hidden_tag() }} 
+          {{ form.message(class="message-writer", placeholder="Ecris ton message") }}
+        <button class="btn-simple">
+          {{ form.submit(class="btn-simple__content", id="submit-button", value="envoyer") }}
+        </button>
+      </form>
+    </footer>
+
 
 <!--
   <section class="mdl-layout__tab-panel" id="fixed-tab-2">

@@ -215,4 +215,17 @@ section {
 .card-border-top {
   border-top: 1px solid rgba(0, 0, 0, 0.54); }
 
+.spinner {
+  border: 8px solid #757575;
+  border-left-color: #1EB980;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  margin: 10px; }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg); } }
+
 /*# sourceMappingURL=main.css.map */

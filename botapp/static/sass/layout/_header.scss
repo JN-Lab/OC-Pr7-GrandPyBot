@@ -1,22 +1,51 @@
-/**
-* All custom CSS for header
-*/
+// Header CSS set-up
+header {
+    width: 100%;
+    background-color: $green-dark;
+    
+    @include flex-box(column, center, center);
+    @include shadow-2dp();
+  }
+  
+  header.header-title{
+    height: 100%;
+  }
 
-.mdl-layout-title{
-
-    &::before {
-        content:"";
-        position: absolute;
-        top: 5px;
-        left: -15px;
-        @include circle(10px, $online-green);
+  nav {
+    width: 100%;
+    
+    & .nav-menu {
+      background-color: $grey-dark;
+      height: 100%;
+      width: 100%;
+      list-style-type: none;
+      margin: 0px;
+    
+      @include flex-box(row, flex-start, center);
     }
+  }
+  
+  .nav-item {
+    padding: 10px;
+    margin-right: 10px;
 
-    @include respond-to("medium") {
-        &::after {
-            content: "A la recherche d'un endroit?";
-            position: fixed;
-            right: 10px;
-        }
+    & > a {
+      text-decoration: none;
+      font-size: 1.5em;
+      font-style: normal;
+      font-variant: small-caps;
+      color: $white;
     }
-}
+    
+    & > a:hover {
+      color: $green-dark;
+    }
+  }
+  
+  .nav-link.is-active {
+    color: $green-dark;
+  }
+
+  .nav-element.inactive {
+    display: none;
+  }

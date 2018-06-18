@@ -1,83 +1,129 @@
 // ----------------------------------
+// Nav Management
+// ----------------------------------
+
+// Function to get the good section id to activate
+function getSectionId(navLinkElt) {
+  var sectionId = "";
+  for (let link of navLinkElt) {
+    if (/is-active/i.test(link.className)) {
+      /#(.+)$/.exec(link.href);
+      var regex = RegExp.$1;
+      sectionId = regex;      
+    }
+  }
+  return sectionId;
+}
+
+// Function to push "activate" class to the selected section
+function setSectionActivation(sectionId, sectionElt) {
+  for (let section of sectionElt) {
+    if (section.id === sectionId) {
+      section.className = "nav-element";
+    } else {
+      section.className = "nav-element inactive";
+    }
+  }
+}
+
+// function that link all operations
+
+function manageSection(navLinkElt, sectionElt) {
+  var sectionId = getSectionId(navLinkElt);
+  setSectionActivation(sectionId, sectionElt);
+}
+
+// Function to switch is-active class when a nav link is clicked
+function manageNavActiveClass(hrefLink, navLinkElt) {
+  for (let link of navLinkElt) {
+    if (link.href === hrefLink) {
+      link.className = "nav-link is-active";
+    } else {
+      link.className = "nav-link";
+    }
+  }
+}
+
+// ----------------------------------
 // Message Bubble Creation
 // ----------------------------------
 
 function setSpeechBubble(profile, message) {
   var bubbleElt = document.createElement("div");
-
+  
   if (profile === "user") {
-    bubbleElt.className = "mdl-card mdl-card__bubble mdl-shadow--2dp talk-right";
+    bubbleElt.className = "card-bubble talk-right__simple";
   } else if (profile === "app") {
-    bubbleElt.className = "mdl-card mdl-card__bubble mdl-shadow--2dp talk-left";
+    bubbleElt.className = "card-bubble talk-left__simple";
   }
-
+  
   var contentBubbleElt = document.createElement("div");
-  contentBubbleElt.className = "mdl-card__supporting-text";
+  contentBubbleElt.className = "card-bubble__text";
   contentBubbleElt.textContent = message;
+  
   bubbleElt.appendChild(contentBubbleElt);
-  document.getElementById("bubble-container").appendChild(bubbleElt);
+  document.getElementById("message-container").appendChild(bubbleElt);
 }
 
 function setMapBubble(latitude, longitude, address) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "mdl-card bubble-card";
+  bubbleElt.className = "card";
 
-  var mapBubbleElt = document.createElement('div');
-  mapBubbleElt.className = "mdl-card__media";
-  mapBubbleElt.style.height = "300px";
-  // mapBubbleElt.style.width = "100%";
-  mapBubbleElt.id = String((latitude + longitude) + Math.random());
-  bubbleElt.appendChild(mapBubbleElt);
+  var mediaBubbleElt = document.createElement("div");
+  mediaBubbleElt.className = "card-media";
+  mediaBubbleElt.id = String((latitude + longitude) + Math.random());
+  bubbleElt.appendChild(mediaBubbleElt);
 
   var linkBubbleElt = document.createElement("div");
-  linkBubbleElt.className = "mdl-card__actions mdl-card--border";
+  linkBubbleElt.className = "card-actions";
   var urlBubbleElt = document.createElement("a");
-  urlBubbleElt.className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent";
+  urlBubbleElt.className = "card-actions__link";
   urlBubbleElt.textContent = "ITINERAIRE";
   urlBubbleElt.href = "https://www.google.com/maps/dir/?api=1&destination=" + address.replace(/\s+/g, "+");
   urlBubbleElt.target = "_blank";
   linkBubbleElt.appendChild(urlBubbleElt);
   bubbleElt.appendChild(linkBubbleElt);
 
-  document.getElementById("bubble-container").appendChild(bubbleElt);
-  initMap(latitude, longitude, mapBubbleElt.id);
+  document.getElementById("message-container").appendChild(bubbleElt);
+  initMap(latitude, longitude, mediaBubbleElt.id);
 }
 
 function setStoryBubble(title, text, link) {
   var bubbleElt = document.createElement("div");
-  bubbleElt.className = "mdl-card bubble-card";
+  bubbleElt.className = "card";
 
   var titleBubbleElt = document.createElement("div");
-  titleBubbleElt.className = "mdl-card__title";
+  titleBubbleElt.className = "card-title";
   var titleTextElt = document.createElement("h2");
-  titleTextElt.className = "mdl-card__title-text";
   titleTextElt.textContent = title;
   titleBubbleElt.appendChild(titleTextElt);
   bubbleElt.appendChild(titleBubbleElt);
 
   var contentBubbleElt = document.createElement("div");
-  contentBubbleElt.className = "mdl-card__supporting-text";
-  contentBubbleElt.textContent = text;
+  contentBubbleElt.className = "card-text";
+  var textBubbleElt = document.createElement("p");
+  textBubbleElt.textContent = text;
+  contentBubbleElt.appendChild(textBubbleElt);
   bubbleElt.appendChild(contentBubbleElt);
 
   var linkBubbleElt = document.createElement("div");
-  linkBubbleElt.className = "mdl-card__actions mdl-card--border";
+  linkBubbleElt.className = "card-actions card-border-top";
   var urlBubbleElt = document.createElement("a");
-  urlBubbleElt.className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent";
+  urlBubbleElt.className = "card-actions__link";
   urlBubbleElt.textContent = "PLUS D'INFOS";
   urlBubbleElt.href = link;
   urlBubbleElt.target = "_blank";
   linkBubbleElt.appendChild(urlBubbleElt);
   bubbleElt.appendChild(linkBubbleElt);
 
-  document.getElementById("bubble-container").appendChild(bubbleElt);
+  document.getElementById("message-container").appendChild(bubbleElt);
 }
 
 function setLoaderBubble() {
   var preloaderElt = document.createElement("div");
   preloaderElt.id= "loader";
-  preloaderElt.className = "mdl-spinner mdl-spinner__loader mdl-js-spinner is-active";
-  document.getElementById("bubble-container").appendChild(preloaderElt);
+  preloaderElt.className = "spinner";
+  document.getElementById("message-container").appendChild(preloaderElt);
 }
 
 // -----------------------------------------------------
@@ -188,7 +234,7 @@ formElt.addEventListener("submit", function(e) {
         console.log(response);
         setResponse(response);
         if ((response.status === "LOCATION_MISSING") || (response.status === "WRONG_LOCATION")) {
-          formElt.elements.message.value = "Je souhaiterais aller...";
+          formElt.elements.message.value = "Je souhaiterais aller ";
         } else {
           formElt.elements.message.value = "";
         }
@@ -205,4 +251,19 @@ formElt.addEventListener("submit", function(e) {
 // Start initialisation
 // ----------------------------------
 
-setSpeechBubble("app", "Bonjour! Cherchez-vous des informations sur un lieu?");
+// For nav management
+var navLinkElt = document.getElementsByClassName("nav-link");
+var sectionElt = document.getElementsByClassName("nav-element");
+
+manageSection(navLinkElt, sectionElt);
+
+for (let link of navLinkElt) {
+  link.addEventListener("click", function(e) {
+    var linkClicked = e.target;
+    manageNavActiveClass(linkClicked.href, navLinkElt);
+    manageSection(navLinkElt, sectionElt);
+  });
+}
+
+// Welcome message
+setSpeechBubble("app", "Bonjour! Cherchez-vous des informations sur un lieu en France?");

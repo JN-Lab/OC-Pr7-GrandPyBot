@@ -8,8 +8,9 @@
 @import 'base/base';
 
 // Layout
-@import 'layout/grid';
 @import 'layout/header';
-@import 'layout/info';
+@import 'layout/footer';
 @import 'layout/chat';
 @import 'layout/bubble';
+@import 'layout/card';
+@import 'layout/loader';

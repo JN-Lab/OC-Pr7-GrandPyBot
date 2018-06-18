@@ -1,169 +1,270 @@
 /**
-* All the mixins
+* VARIABLES
+*/
+/**
+* MIXINS
 */
 /**
 * All the basic custom CSS
 */
-/**
- * Set up a decent box model on the root element
- */
-html {
+* {
   box-sizing: border-box; }
 
-/**
-* Make all elements from the DOM inherit from the parent box-sizing
-* Since `*` has a specificity of 0, it does not override the `html` value
-* making all elements inheriting from the root box-sizing value
-* See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
-*/
-*,
-*::before,
-*::after {
-  box-sizing: inherit; }
-
-/**
-* Basic style for the app
-*/
 html,
 body {
-  font-family: "Roboto", "Helvetica", sans-serif;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  height: 100%;
+  font-family: "Roboto", "Helevetica", sans-serif;
+  font-size: 100%;
   background-color: #F5F5F5; }
 
-section {
-  position: absolute;
-  width: 100%;
-  height: 100%; }
+h1 {
+  color: #FFFFFF; }
 
 .page-content {
+  box-sizing: border-box;
+  background-color: #F5F5F5;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  overflow: hidden; }
+  justify-content: flex-start;
+  align-items: center; }
 
-/**
-* All custom CSS for header
-*/
-.mdl-layout-title::before {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: -15px;
-  height: 10px;
-  width: 10px;
-  border-radius: 5px;
-  background: #2E7D32; }
-@media (min-width: 800px) {
-  .mdl-layout-title::after {
-    content: "A la recherche d'un endroit?";
-    position: fixed;
-    right: 10px; } }
-
-/**
-Specific CSS for info card
-*/
-.info-container {
+main {
   width: 100%;
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: scroll; }
-
-.info-card > .mdl-card__media {
-  height: 200px;
-  background: url("../img/avatar-example.png") center no-repeat #F9AA33; }
-
-.info-card > .mdl-card__actions {
-  display: flex;
-  flex-direction: row;
-  justify-content: center; }
-
-.info-card > .mdl-card__actions > a {
-  height: 40px; }
-
-/* All elements concerning chat form  */
-.chat-content {
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: scroll;
-  transform: rotate(180deg);
-  direction: rtl; }
-
-.bubble-historic {
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  transform: rotate(180deg);
-  direction: ltr; }
-
-/* All element concerning message form */
-.chat-form {
-  background-color: #FFFFFF;
-  width: 100%;
-  height: 55px; }
-
-form {
-  width: 100%;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
 
-.message-writer {
+section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+header {
+  width: 100%;
+  background-color: #045D56;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+
+header.header-title {
+  height: 100%; }
+
+nav {
+  width: 100%; }
+  nav .nav-menu {
+    background-color: #757575;
+    height: 100%;
+    width: 100%;
+    list-style-type: none;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center; }
+
+.nav-item {
+  padding: 10px;
+  margin-right: 10px; }
+  .nav-item > a {
+    text-decoration: none;
+    font-size: 1.5em;
+    font-style: normal;
+    font-variant: small-caps;
+    color: #FFFFFF; }
+  .nav-item > a:hover {
+    color: #045D56; }
+
+.nav-link.is-active {
+  color: #045D56; }
+
+.nav-element.inactive {
+  display: none; }
+
+.footer-chat {
+  width: 100%;
+  border-top: 1px solid #045D56;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+form {
+  height: 100%;
   width: 100%;
   max-width: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+form .message-writer {
+  flex: 1;
+  font-size: 1em;
+  border: none;
+  padding: 3px; }
+  @media (min-width: 800px) {
+    form .message-writer {
+      font-size: 1.5em; } }
+
+.btn-simple {
+  height: 100%;
+  background: none;
+  border: none; }
+
+.btn-simple__content {
+  background: none;
+  border: none;
+  font-size: 1.3em;
+  font-weight: bold;
+  font-variant: small-caps;
+  color: #045D56; }
+  @media (min-width: 800px) {
+    .btn-simple__content {
+      font-size: 2em; } }
+
+.main-chat {
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.section-chat {
+  height: 100%;
+  width: 100%;
+  max-width: 800px;
+  flex: 1;
+  overflow: auto;
+  transform: rotate(180deg);
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; }
+
+.message-alignment {
+  height: 100%;
+  width: 100%;
+  transform: rotate(180deg);
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center; }
+
+.card-bubble {
+  width: 90%;
+  max-width: 600px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1em;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+
+.card-bubble.talk-left__simple {
+  border-radius: 0 20px 20px 20px;
+  background-color: #1EB980;
+  margin-right: 25px; }
+
+.card-bubble.talk-right__simple {
+  border-radius: 20px 0px 20px 20px;
+  background-color: #FFFFFF;
+  margin-left: 25px; }
+
+.card-bubble__text {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 14px;
+  line-height: 18px;
+  padding: 16px 16px; }
+
+.card {
+  width: 100%;
+  max-width: 800px;
+  min-width: 300px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
   margin-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+  margin-bottom: 5px; }
+  @media (min-width: 800px) {
+    .card {
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); } }
+
+.card-title {
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #1EB980; }
+
+.card-text {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: rgba(0, 0, 0, 0.54); }
+
+.card-actions {
+  padding: 15px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center; }
 
-/**
-* All custom CSS for bubbles
-*/
-.mdl-card {
+.card-actions__social {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+.card-actions__link {
+  text-decoration: none;
+  font-size: 1em;
+  font-style: normal;
+  font-variant: small-caps;
+  margin-right: 50px;
+  color: #F4511E; }
+
+.card-media {
   width: 100%;
-  max-width: 800px;
-  margin-top: 10px;
-  margin-bottom: 10px; }
-  @media (min-width: 800px) {
-    .mdl-card {
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); } }
+  min-height: 200px;
+  padding: 10px;
+  background-color: #1EB980;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
 
-.mdl-card__actions > a {
-  text-decoration: none; }
+.card-media > img {
+  height: 30%;
+  width: 30%; }
 
-.mdl-card.mdl-card__bubble {
-  min-height: auto;
-  height: auto;
-  width: 90%;
-  max-width: 600px; }
+.card-border-top {
+  border-top: 1px solid rgba(0, 0, 0, 0.54); }
 
-.mdl-card.talk-left {
-  border-radius: 0 20px 0 20px;
-  background-color: #A3BDED;
-  margin-left: 0px; }
-
-.mdl-card.talk-right {
-  border-radius: 20px 0px 20px 0px;
-  background-color: #FFFFFF;
-  margin-left: 0px; }
-
-.mdl-spinner.mdl-spinner__loader {
+.spinner {
+  border: 8px solid #757575;
+  border-left-color: #1EB980;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
   margin: 10px; }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg); } }
 
 /*# sourceMappingURL=main.css.map */

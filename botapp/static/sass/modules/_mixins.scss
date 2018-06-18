@@ -1,6 +1,8 @@
 /**
-* All the mixins
+* MIXINS
 */
+
+// To manage responsive design
 @mixin respond-to($breakpoint) {
     $raw-query: map-get($breakpoints, $breakpoint);
 
@@ -20,6 +22,7 @@
     }
 }
 
+// To create a circle
 @mixin circle($diameter, $color) {
     height: $diameter;
     width: $diameter;
@@ -27,9 +30,18 @@
     background: $color;
 }
 
-// Get from material design lite scss
-@mixin shadow-2dp() {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
-                0 3px 1px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity),
-                0 1px 5px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
-}
+// To create a flex box
+@mixin flex-box($direction, $main-alignment, $secondary-alignment) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $main-alignment;
+    align-items: $secondary-alignment;
+  }
+
+// To create a litte shadow on elements
+  @mixin shadow-2dp() {
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+                  0 3px 1px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity),
+                  0 1px 5px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
+  }
+  

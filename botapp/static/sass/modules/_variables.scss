@@ -1,12 +1,41 @@
-// Font
-$font-stack: 'Roboto','Helvetica' , sans-serif;
+/**
+* VARIABLES
+*/
 
-// All the colors from the website
+// Fonts
+$font-stack: 'Roboto', 'Helevetica', sans-serif;
+  
+// Colors
+$orange: #F4511E;
+$yellow: #FFCF44;
+$green-light: #1EB980;
+$green-dark: #045D56;
+$dark-light: rgba(0,0,0, 0.54);
 $white: #FFFFFF;
-$blue-light: #A3BDED;
-$online-green: #2E7D32;
 $grey: #F5F5F5;
-$yellow: #F9AA33;
+
+$blue-light: #A3BDED;
+$blue-dark: #01579B;
+
+$grey-dark: #757575;
+
+// For Shadows
+$shadow-key-umbra-opacity: 0.2 !default;
+$shadow-key-penumbra-opacity: 0.14 !default;
+$shadow-ambient-shadow-opacity: 0.12 !default;
+
+// Size
+$chatbox-max-width: 800px;
+
+// For talk bubbles
+$card-text__font-size: 14px !default;
+$card-text__line-height: 18px !default;
+$card-text__horizontal-padding: 16px !default;
+$card-text__vertical-padding: 16px !default;
+
+// For Card bubbles
+$card-max-width: 800px;
+$card-min-width: 300px;
 
 // Breakpoints Screen
 $breakpoints: (
@@ -15,11 +44,3 @@ $breakpoints: (
     'large': (min-width: 1000px),
     'huge': (min-width: 1200px),
 );
-
-// For shadows -> get from material design lite scss
-$shadow-key-umbra-opacity: 0.2 !default;
-$shadow-key-penumbra-opacity: 0.14 !default;
-$shadow-ambient-shadow-opacity: 0.12 !default;
-
-
-$card-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);

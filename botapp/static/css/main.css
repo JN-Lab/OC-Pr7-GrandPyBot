@@ -243,6 +243,13 @@ Specific CSS for info card
   justify-content: flex-start;
   align-items: center; }
 
+.card-actions__social {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
 .card-actions__link {
   text-decoration: none;
   font-size: 1em;
@@ -255,10 +262,15 @@ Specific CSS for info card
   width: 100%;
   min-height: 200px;
   padding: 10px;
+  background-color: #1EB980;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end; }
+  justify-content: center;
+  align-items: center; }
+
+.card-media > img {
+  height: 30%;
+  width: 30%; }
 
 .card-border-top {
   border-top: 1px solid rgba(0, 0, 0, 0.54); }

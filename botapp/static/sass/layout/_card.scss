@@ -31,6 +31,11 @@
     padding: 15px;
     @include flex-box(row, flex-start, center);
   }
+
+  .card-actions__social {
+    padding: 15px;
+    @include flex-box(row, center, center);    
+  }
   
   .card-actions__link {
     text-decoration: none;
@@ -45,10 +50,16 @@
     width: 100%;
     min-height: 200px;
     padding: 10px;
+    background-color: $green-light;
     
-    @include flex-box(column, flex-end, flex-end);
+    @include flex-box(column, center, center);
   }
   
+  .card-media > img {
+    height: 30%;
+    width: 30%;
+  }
+
   .card-border-top {
     border-top: 1px solid $dark-light;
   }
